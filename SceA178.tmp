@@ -126,27 +126,16 @@ texture = ExtResource("3_mbqk4")
 [node name="Camera2D" type="Camera2D" parent="Player/Sprite2D"]
 scale = Vector2(3.02959, 3.08434)
 ignore_rotation = false
-zoom = Vector2(4, 4)
+zoom = Vector2(2, 2)
 position_smoothing_speed = 50.0
 rotation_smoothing_enabled = true
 
 [node name="LeftThruster" type="AnimatedSprite2D" parent="Player/Sprite2D"]
-position = Vector2(-21.2071, 0)
-rotation = -1.5708
 sprite_frames = SubResource("SpriteFrames_4jrmk")
 animation = &"Thrust0"
 script = ExtResource("5_ytjv8")
 
-[node name="RightThruster" type="AnimatedSprite2D" parent="Player/Sprite2D"]
-position = Vector2(21.2071, 0)
-rotation = 1.5708
-scale = Vector2(1, 1.11687)
-sprite_frames = SubResource("SpriteFrames_4jrmk")
-animation = &"Thrust4"
-script = ExtResource("5_ytjv8")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-visible = false
 shape = SubResource("RectangleShape2D_wkwkd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
