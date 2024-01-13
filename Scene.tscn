@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cou5ph7kcnn7x"]
+[gd_scene load_steps=25 format=3 uid="uid://clrqwmrb6mddi"]
 
 [ext_resource type="Texture2D" uid="uid://c4kcculj23hyb" path="res://PIA17172_Saturn_eclipse_mosaic_bright_crop.jpg" id="1_ti3k6"]
 [ext_resource type="Script" path="res://PlayerMovement.gd" id="1_u6bc0"]
@@ -158,6 +158,8 @@ size = Vector2(41, 27)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qilil"]
 size = Vector2(126, 126)
 
+[sub_resource type="TileSet" id="TileSet_yp6bf"]
+
 [node name="Scene" type="Node2D"]
 
 [node name="Pia17172SaturnEclipseMosaicBrightCrop" type="Sprite2D" parent="."]
@@ -211,3 +213,7 @@ texture = ExtResource("3_6omeh")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Asteroid"]
 position = Vector2(-308, -164)
 shape = SubResource("RectangleShape2D_qilil")
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_yp6bf")
+format = 2

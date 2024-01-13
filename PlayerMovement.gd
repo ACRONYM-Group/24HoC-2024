@@ -15,19 +15,21 @@ func _integrate_forces(state):
 	var delta_rotation = Input.get_vector("rotate_left", "rotate_right", "", "").x
 
 	
-	if Input.is_action_pressed("thrust"):
-		state.apply_central_force((Vector2(0, -1) * main_thrust).rotated(self.rotation))
-
-	if input_direction.length() > 0:
-		state.apply_central_force((input_direction * rcs_thrust).rotated(self.rotation))
 	
-	state.apply_torque(delta_rotation * torque)
 
 func get_input(delta):
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	var delta_rotation = Input.get_vector("rotate_left", "rotate_right", "", "").x
 
 	rot_vel *= 1.0 - (3 * delta)
+	
+	if Input.is_action_pressed("thrust"):
+		apply_central_force((Vector2(0, -1) * 2 * main_thrust).rotated(self.rotation))
+
+	if input_direction.length() > 0:
+		apply_central_force((input_direction * 2 * rcs_thrust).rotated(self.rotation))
+	
+	apply_torque(delta_rotation * torque * 5)
 	
 	$AnimatedSprite2D/LeftThruster.reset()
 	$AnimatedSprite2D/RightThruster.reset()
