@@ -6,24 +6,27 @@ extends RigidBody2D
 @export var max_rotation_rate = 180.0
 
 var rot_vel = 0
-var ship_thrust = 250
+var rcs_thrust = 250
 var torque = 100
+var main_thrust = 1000
 
 func _integrate_forces(state):
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	var delta_rotation = Input.get_vector("rotate_left", "rotate_right", "", "").x
+
 	
+	if Input.is_action_pressed("thrust"):
+		state.apply_central_force((Vector2(0, -1) * main_thrust).rotated(self.rotation))
+
 	if input_direction.length() > 0:
-		state.apply_central_force((input_direction * ship_thrust).rotated(self.rotation))
-	else:
-		state.apply_central_force(Vector2())
+		state.apply_central_force((input_direction * rcs_thrust).rotated(self.rotation))
 	
 	state.apply_torque(delta_rotation * torque)
 
 func get_input(delta):
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	var delta_rotation = Input.get_vector("rotate_left", "rotate_right", "", "").x
-	
+
 	rot_vel *= 1.0 - (3 * delta)
 	
 	$AnimatedSprite2D/LeftThruster.reset()
