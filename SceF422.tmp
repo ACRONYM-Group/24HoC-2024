@@ -12,44 +12,36 @@ size = Vector2(14, 15)
 [node name="Scene" type="Node2D"]
 
 [node name="Pia17172SaturnEclipseMosaicBrightCrop" type="Sprite2D" parent="."]
-position = Vector2(-1311, 4415)
+position = Vector2(-11, -24)
 scale = Vector2(10, 10)
 texture = ExtResource("1_ti3k6")
 
-[node name="GoDot" type="RigidBody2D" parent="."]
-mass = 100.0
-gravity_scale = 0.0
-linear_damp_mode = 1
-angular_damp_mode = 1
-
-[node name="Sprite2D2" type="Sprite2D" parent="GoDot"]
-position = Vector2(-8, 110)
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-308, -164)
 texture = ExtResource("3_6omeh")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GoDot"]
-position = Vector2(-8, 110)
+[node name="RigidBody2D" type="RigidBody2D" parent="Sprite2D"]
+disable_mode = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/RigidBody2D"]
+position = Vector2(-0.5, -0.5)
 shape = ExtResource("5_thcux")
 
-[node name="Player" type="RigidBody2D" parent="."]
-position = Vector2(-8, 110)
-gravity_scale = 0.0
-linear_damp_mode = 1
-angular_damp_mode = 1
-angular_damp = 1.0
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
 script = ExtResource("1_u6bc0")
 
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
-position = Vector2(8, -110)
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
 scale = Vector2(0.330078, 0.324219)
 texture = ExtResource("3_mbqk4")
 
-[node name="Camera2D" type="Camera2D" parent="Player/Sprite2D"]
+[node name="Camera2D" type="Camera2D" parent="RigidBody2D/Sprite2D"]
 scale = Vector2(3.02959, 3.08434)
 ignore_rotation = false
 zoom = Vector2(2, 2)
 position_smoothing_speed = 50.0
 rotation_smoothing_enabled = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(8, -109.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(0, 0.5)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_wkwkd")
