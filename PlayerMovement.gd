@@ -21,6 +21,9 @@ func _integrate_forces(state):
 	state.apply_torque(delta_rotation * torque)
 
 func get_input(delta):
+	var input_direction = Input.get_vector("left", "right", "up", "down")
+	var delta_rotation = Input.get_vector("rotate_left", "rotate_right", "", "").x
+	
 	rot_vel *= 1.0 - (3 * delta)
 	
 	$AnimatedSprite2D/LeftThruster.reset()
@@ -55,8 +58,8 @@ func get_input(delta):
 		$AnimatedSprite2D.play("thrusting")
 	if Input.is_action_just_released("thrust"):
 		$AnimatedSprite2D.play("default")
-	if Input.is_action_pressed("thrust"):
-		velocity += (Vector2(0, -1) * 5 * accel_rate).rotated(rotation) * delta
+	#if Input.is_action_pressed("thrust"):
+		#velocity += (Vector2(0, -1) * 5 * accel_rate).rotated(rotation) * delta
 		
 		
 

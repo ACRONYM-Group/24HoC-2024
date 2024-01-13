@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cou5ph7kcnn7x"]
+[gd_scene load_steps=23 format=3 uid="uid://cou5ph7kcnn7x"]
 
 [ext_resource type="Texture2D" uid="uid://c4kcculj23hyb" path="res://PIA17172_Saturn_eclipse_mosaic_bright_crop.jpg" id="1_ti3k6"]
 [ext_resource type="Script" path="res://PlayerMovement.gd" id="1_u6bc0"]
@@ -7,12 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://n57clg7rclx1" path="res://Thruster.png" id="4_s2c4n"]
 [ext_resource type="Script" path="res://Thruster.gd" id="5_ytjv8"]
 [ext_resource type="AudioStream" uid="uid://dhbtg7dpc0tuu" path="res://Sounds/Steam Puff.mp3" id="7_vcox7"]
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7gnyr"]
-random_pitch = 1.2
-streams_count = 1
-stream_0/stream = ExtResource("7_vcox7")
-stream_0/weight = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3k5ot"]
 atlas = ExtResource("3_cpou3")
@@ -152,11 +146,14 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fro2s"]
-size = Vector2(41, 27)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wkwkd"]
+size = Vector2(50, 50)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qilil"]
-size = Vector2(126, 126)
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7gnyr"]
+random_pitch = 1.2
+streams_count = 1
+stream_0/stream = ExtResource("7_vcox7")
+stream_0/weight = 1.0
 
 [node name="Scene" type="Node2D"]
 
@@ -165,23 +162,18 @@ position = Vector2(-11, -24)
 scale = Vector2(10, 10)
 texture = ExtResource("1_ti3k6")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = SubResource("AudioStreamRandomizer_7gnyr")
-pitch_scale = 0.1
-
-[node name="Player2" type="RigidBody2D" parent="."]
-gravity_scale = 0.0
+[node name="Player" type="CharacterBody2D" parent="."]
 script = ExtResource("1_u6bc0")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player2"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
 sprite_frames = SubResource("SpriteFrames_g1gax")
 
-[node name="Camera2D" type="Camera2D" parent="Player2/AnimatedSprite2D"]
+[node name="Camera2D" type="Camera2D" parent="Player/AnimatedSprite2D"]
 ignore_rotation = false
 position_smoothing_speed = 50.0
 rotation_smoothing_enabled = true
 
-[node name="LeftThruster" type="AnimatedSprite2D" parent="Player2/AnimatedSprite2D"]
+[node name="LeftThruster" type="AnimatedSprite2D" parent="Player/AnimatedSprite2D"]
 position = Vector2(-22.625, -5.0625)
 rotation = -1.5708
 scale = Vector2(1, 1.019)
@@ -189,7 +181,7 @@ sprite_frames = SubResource("SpriteFrames_4jrmk")
 animation = &"Thrust0"
 script = ExtResource("5_ytjv8")
 
-[node name="RightThruster" type="AnimatedSprite2D" parent="Player2/AnimatedSprite2D"]
+[node name="RightThruster" type="AnimatedSprite2D" parent="Player/AnimatedSprite2D"]
 position = Vector2(23.5, -5.0625)
 rotation = 1.5708
 scale = Vector2(1, 1.139)
@@ -197,17 +189,14 @@ sprite_frames = SubResource("SpriteFrames_4jrmk")
 animation = &"Thrust4"
 script = ExtResource("5_ytjv8")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player2"]
-position = Vector2(0.5, -5.5)
-shape = SubResource("RectangleShape2D_fro2s")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+visible = false
+shape = SubResource("RectangleShape2D_wkwkd")
 
-[node name="Asteroid" type="RigidBody2D" parent="."]
-gravity_scale = 0.0
-
-[node name="Sprite2D" type="Sprite2D" parent="Asteroid"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-308, -164)
 texture = ExtResource("3_6omeh")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Asteroid"]
-position = Vector2(-308, -164)
-shape = SubResource("RectangleShape2D_qilil")
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_7gnyr")
+pitch_scale = 0.1
