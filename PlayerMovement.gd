@@ -24,6 +24,12 @@ func get_input(delta):
 	
 	$AnimatedSprite2D/LeftThruster.reset()
 	$AnimatedSprite2D/RightThruster.reset()
+	
+	if ( Input.is_action_just_pressed("left") || Input.is_action_just_pressed("right") || Input.is_action_just_pressed("up") || Input.is_action_just_pressed("down")) and input_direction != Vector2(0, 0):
+		$"../AudioStreamPlayer".play(0.0)
+		
+	if (Input.is_action_just_pressed("rotate_left") || Input.is_action_just_pressed("rotate_right")) && delta_rotation != 0:
+		$"../AudioStreamPlayer".play(0.0)
 		
 	if input_direction.x > 0:
 		$AnimatedSprite2D/LeftThruster.thruster_1 = true
