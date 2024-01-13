@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://clrqwmrb6mddi"]
+[gd_scene load_steps=21 format=3 uid="uid://clrqwmrb6mddi"]
 
 [ext_resource type="Texture2D" uid="uid://c4kcculj23hyb" path="res://PIA17172_Saturn_eclipse_mosaic_bright_crop.jpg" id="1_ti3k6"]
 [ext_resource type="Script" path="res://PlayerMovement.gd" id="1_u6bc0"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://be5aea25d150q" path="res://miner_spritesheet.png" id="3_cpou3"]
 [ext_resource type="Texture2D" uid="uid://n57clg7rclx1" path="res://Thruster.png" id="4_s2c4n"]
 [ext_resource type="Script" path="res://Thruster.gd" id="5_ytjv8"]
-[ext_resource type="AudioStream" uid="uid://dhbtg7dpc0tuu" path="res://Sounds/Steam Puff.mp3" id="7_vcox7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3k5ot"]
 atlas = ExtResource("3_cpou3")
@@ -147,41 +146,16 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wkwkd"]
-size = Vector2(14, 15)
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7gnyr"]
-random_pitch = 1.2
-streams_count = 1
-stream_0/stream = ExtResource("7_vcox7")
-stream_0/weight = 1.0
+size = Vector2(50, 50)
 
 [node name="Scene" type="Node2D"]
 
 [node name="Pia17172SaturnEclipseMosaicBrightCrop" type="Sprite2D" parent="."]
-position = Vector2(-1311, 4415)
+position = Vector2(-11, -24)
 scale = Vector2(10, 10)
 texture = ExtResource("1_ti3k6")
 
-[node name="GoDot" type="RigidBody2D" parent="."]
-mass = 100.0
-gravity_scale = 0.0
-linear_damp_mode = 1
-angular_damp_mode = 1
-
-[node name="Sprite2D2" type="Sprite2D" parent="GoDot"]
-position = Vector2(-8, 110)
-texture = ExtResource("3_6omeh")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GoDot"]
-position = Vector2(-8, 110)
-shape = ExtResource("5_thcux")
-
-[node name="Player" type="RigidBody2D" parent="."]
-position = Vector2(-8, 110)
-gravity_scale = 0.0
-linear_damp_mode = 1
-angular_damp_mode = 1
-angular_damp = 1.0
+[node name="Player" type="CharacterBody2D" parent="."]
 script = ExtResource("1_u6bc0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
@@ -215,7 +189,3 @@ shape = SubResource("RectangleShape2D_wkwkd")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-308, -164)
 texture = ExtResource("3_6omeh")
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = SubResource("AudioStreamRandomizer_7gnyr")
-pitch_scale = 0.1
