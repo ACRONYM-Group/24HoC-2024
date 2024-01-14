@@ -2,15 +2,15 @@
 
 [ext_resource type="Script" path="res://Scene.gd" id="1_23tfu"]
 [ext_resource type="Script" path="res://PlayerMovement.gd" id="1_u6bc0"]
-[ext_resource type="Texture2D" uid="uid://dts4jvjjgfn7x" path="res://Images/Saturn_Background.png" id="2_x8onv"]
+[ext_resource type="Texture2D" uid="uid://dvhd2v63hcgmk" path="res://Images/Saturn_Background.png" id="2_x8onv"]
 [ext_resource type="Texture2D" uid="uid://isfvtg2foor8" path="res://Sprites/Miner/miner_spritesheet.png" id="3_cpou3"]
 [ext_resource type="Texture2D" uid="uid://l0xsibf22447" path="res://Sprites/Miner/Thruster.png" id="4_s2c4n"]
-[ext_resource type="AudioStream" uid="uid://y7mmtq7sob7u" path="res://Sounds/Hammer-Pulse.mp3" id="4_wnorf"]
+[ext_resource type="AudioStream" uid="uid://b0hdykp6eygph" path="res://Sounds/Hammer-Pulse.mp3" id="4_wnorf"]
 [ext_resource type="Script" path="res://Thruster.gd" id="5_ytjv8"]
 [ext_resource type="Script" path="res://CameraZoom.gd" id="7_g1up4"]
 [ext_resource type="Script" path="res://MiningCollider.gd" id="7_hmudl"]
 [ext_resource type="AudioStream" uid="uid://dhbtg7dpc0tuu" path="res://Sounds/Steam Puff.mp3" id="7_vcox7"]
-[ext_resource type="PackedScene" path="res://EscapeMenu.tscn" id="8_5jshb"]
+[ext_resource type="PackedScene" uid="uid://cfuyixon7ew87" path="res://EscapeMenu.tscn" id="8_5jshb"]
 [ext_resource type="Texture2D" uid="uid://u1alvyyh6y0c" path="res://Sprites/Tiles/Asteroid_Hextile_Ice0.png" id="8_dchvf"]
 [ext_resource type="Script" path="res://Inventory.gd" id="8_p4qje"]
 [ext_resource type="Script" path="res://Asteroid.gd" id="9_nld0i"]
@@ -18,23 +18,23 @@
 [ext_resource type="Texture2D" uid="uid://bbvevvyjsg6m1" path="res://Sprites/Tiles/Asteroid_Hextile_Ice2.png" id="10_iwi1i"]
 [ext_resource type="Script" path="res://Asteroids.gd" id="11_ceddo"]
 [ext_resource type="Texture2D" uid="uid://cs0o0jy4jjhym" path="res://Sprites/laser.png" id="11_cpd5r"]
-[ext_resource type="Texture2D" uid="uid://dqax70sumhrej" path="res://Sprites/Tiles/Asteroid_Hextile_Silicates1.png" id="12_f15ka"]
-[ext_resource type="Texture2D" uid="uid://cxqrafu2ckqo4" path="res://Sprites/Tiles/Asteroid_Hextile_Silicates2.png" id="13_j0aq3"]
+[ext_resource type="Texture2D" uid="uid://c3uio16efj26u" path="res://Sprites/Tiles/Asteroid_Hextile_Silicates1.png" id="12_f15ka"]
+[ext_resource type="Texture2D" uid="uid://cjv7qgui8nawt" path="res://Sprites/Tiles/Asteroid_Hextile_Silicates2.png" id="13_j0aq3"]
 [ext_resource type="Texture2D" uid="uid://cx38fmbaciwsc" path="res://Sprites/Tiles/Asteroid_Hextile_Amulite.png" id="13_tln5h"]
-[ext_resource type="Texture2D" uid="uid://cjtpdf1kycrgc" path="res://Sprites/Tiles/Asteroid_Hextile_Silicates3.png" id="14_2vgwr"]
+[ext_resource type="Texture2D" uid="uid://t1i7t7e76hmy" path="res://Sprites/Tiles/Asteroid_Hextile_Silicates3.png" id="14_2vgwr"]
 [ext_resource type="Texture2D" uid="uid://du55igupmw15a" path="res://Sprites/Tiles/Asteroid_Hextile_Metals0.png" id="14_5763v"]
 [ext_resource type="Texture2D" uid="uid://co0u4y3k364hj" path="res://Sprites/Tiles/Asteroid_Hextile_Metals1.png" id="15_s71wk"]
-[ext_resource type="Texture2D" uid="uid://cvt2wy22hylkq" path="res://Sprites/Tiles/Asteroid_Hextile_Carbon0.png" id="15_twigs"]
-[ext_resource type="Texture2D" uid="uid://ct5baet7x1jd8" path="res://Sprites/Tiles/Asteroid_Hextile_Carbon1.png" id="16_adf45"]
+[ext_resource type="Texture2D" uid="uid://rg8a4s7hjwdk" path="res://Sprites/Tiles/Asteroid_Hextile_Carbon0.png" id="15_twigs"]
+[ext_resource type="Texture2D" uid="uid://cxksep1c4fq3v" path="res://Sprites/Tiles/Asteroid_Hextile_Carbon1.png" id="16_adf45"]
 [ext_resource type="Texture2D" uid="uid://bkek8rm71n4x1" path="res://Sprites/Tiles/Asteroid_Hextile_Metals2.png" id="16_n1gnu"]
 [ext_resource type="PackedScene" uid="uid://eyqq1gfbjyvg" path="res://InventoryBar.tscn" id="16_rlqqm"]
-[ext_resource type="Texture2D" uid="uid://burmggrhb2hs6" path="res://Sprites/Tiles/Asteroid_Hextile_Carbon2.png" id="17_2ekms"]
-[ext_resource type="PackedScene" path="res://StatBars.tscn" id="17_46saa"]
+[ext_resource type="Texture2D" uid="uid://bvpix814opq6s" path="res://Sprites/Tiles/Asteroid_Hextile_Carbon2.png" id="17_2ekms"]
+[ext_resource type="PackedScene" uid="uid://d04ymiajcoa1l" path="res://StatBars.tscn" id="17_46saa"]
 [ext_resource type="Texture2D" uid="uid://cwo7xtochsghj" path="res://Sprites/Tiles/Asteroid_Hextile_Metals3.png" id="17_h21yj"]
-[ext_resource type="Texture2D" uid="uid://2j76hht4gd5a" path="res://Sprites/Tiles/Asteroid_Hextile_Carbon3.png" id="18_4eeql"]
-[ext_resource type="Texture2D" uid="uid://h4bq87frau84" path="res://Sprites/Tiles/Asteroid_Hextile_Copper.png" id="19_da3kw"]
-[ext_resource type="Texture2D" uid="uid://bm4p7c61wc00y" path="res://Sprites/Tiles/Asteroid_Hextile_Silicates0.png" id="21_spt3l"]
-[ext_resource type="PackedScene" path="res://Minimap.tscn" id="32_5xsfn"]
+[ext_resource type="Texture2D" uid="uid://dsui3ktnmtdv0" path="res://Sprites/Tiles/Asteroid_Hextile_Carbon3.png" id="18_4eeql"]
+[ext_resource type="Texture2D" uid="uid://d35vs0nikbqyj" path="res://Sprites/Tiles/Asteroid_Hextile_Copper.png" id="19_da3kw"]
+[ext_resource type="Texture2D" uid="uid://be2p2rsocja3i" path="res://Sprites/Tiles/Asteroid_Hextile_Silicates0.png" id="21_spt3l"]
+[ext_resource type="PackedScene" uid="uid://b24if7odisltp" path="res://Minimap.tscn" id="32_5xsfn"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7gnyr"]
 random_pitch = 1.2
@@ -203,7 +203,6 @@ texture = ExtResource("9_uey1h")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_csub6"]
 texture = ExtResource("12_f15ka")
-texture_region_size = Vector2i(14, 12)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
@@ -211,7 +210,6 @@ texture_region_size = Vector2i(14, 12)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnhg3"]
 texture = ExtResource("13_j0aq3")
-texture_region_size = Vector2i(14, 12)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
@@ -219,7 +217,6 @@ texture_region_size = Vector2i(14, 12)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7spfy"]
 texture = ExtResource("14_2vgwr")
-texture_region_size = Vector2i(14, 12)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
@@ -227,7 +224,6 @@ texture_region_size = Vector2i(14, 12)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s7m53"]
 texture = ExtResource("15_twigs")
-texture_region_size = Vector2i(14, 12)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
@@ -235,7 +231,6 @@ texture_region_size = Vector2i(14, 12)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8lnl8"]
 texture = ExtResource("16_adf45")
-texture_region_size = Vector2i(14, 12)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
@@ -243,7 +238,6 @@ texture_region_size = Vector2i(14, 12)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hli6v"]
 texture = ExtResource("17_2ekms")
-texture_region_size = Vector2i(14, 12)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
@@ -251,7 +245,6 @@ texture_region_size = Vector2i(14, 12)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_swhg8"]
 texture = ExtResource("18_4eeql")
-texture_region_size = Vector2i(14, 12)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
@@ -259,7 +252,6 @@ texture_region_size = Vector2i(14, 12)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qpnjc"]
 texture = ExtResource("19_da3kw")
-texture_region_size = Vector2i(14, 12)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
@@ -274,7 +266,6 @@ texture = ExtResource("10_iwi1i")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_elip4"]
 texture = ExtResource("13_tln5h")
-texture_region_size = Vector2i(14, 12)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
@@ -282,7 +273,6 @@ texture_region_size = Vector2i(14, 12)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gka06"]
 texture = ExtResource("14_5763v")
-texture_region_size = Vector2i(14, 12)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
@@ -290,7 +280,6 @@ texture_region_size = Vector2i(14, 12)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aru0p"]
 texture = ExtResource("15_s71wk")
-texture_region_size = Vector2i(14, 12)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
@@ -298,7 +287,6 @@ texture_region_size = Vector2i(14, 12)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pygo0"]
 texture = ExtResource("16_n1gnu")
-texture_region_size = Vector2i(14, 12)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
@@ -306,7 +294,6 @@ texture_region_size = Vector2i(14, 12)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uvh7t"]
 texture = ExtResource("17_h21yj")
-texture_region_size = Vector2i(14, 12)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
@@ -314,7 +301,6 @@ texture_region_size = Vector2i(14, 12)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pcye5"]
 texture = ExtResource("21_spt3l")
-texture_region_size = Vector2i(14, 12)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
