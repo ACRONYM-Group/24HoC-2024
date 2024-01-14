@@ -1,13 +1,14 @@
-extends RayCast2D
+extends Control
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
-	
+	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if is_colliding():
-		self.get_collider().drill_collide(self.get_collision_point())
+	pass
+	
+func set_hp_bar_perc(amount):
+	$HPBar.value = amount

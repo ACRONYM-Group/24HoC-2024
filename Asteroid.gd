@@ -1,32 +1,43 @@
-extends RigidBody2D
+extends TileMap
 
 const ICE_TILE = Vector2i(0, 0)
 const ROCK_TILE = Vector2i(0, 1)
 
+var queue = []
+var last_frame = []
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	generate_tile_map()
-	regenerate_mesh()
+	generate_random()
+	
+func generate_random():
+	var rng = RandomNumberGenerator.new()
+	var size = rng.randi_range(6, 12)
+	var types = [[4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16], [17]]
+	var index = rng.randi_range(0, types.size() - 1)
+	
+	generate_tile_map(types[index], size)
 
-func generate_tile_map():
-	var tm = $TileMap
+func generate_tile_map(material, size: int = 10):
+	var tm = self
 	var rng = RandomNumberGenerator.new()
 	
 	var next_to_update = [Vector2i(0, 0)]
 	
-	for i in range(7):
+	for i in range(size):
 		var next_update_set = []
 		
 		for update_tile in next_to_update:
-			if i < 6:
-				tm.set_cell(0, update_tile, 3, Vector2i(0, 0))
+			if i < size * 6 / 10:
+				var index = rng.randi_range(0, material.size() - 1)
+				tm.set_cell(0, update_tile, material[index], Vector2i(0, 0))
 			else:
 				tm.set_cell(0, update_tile, rng.randi_range(0,2), Vector2i(0, 0))
 				
 			var pattern = tm.get_pattern(0, tm.get_surrounding_cells(update_tile))
 			for neighbor in tm.get_surrounding_cells(update_tile):
 				if neighbor not in tm.get_used_cells(0):
-					if rng.randi_range(0, 10) < 8:
+					if rng.randi_range(0, 10) < 6:
 						next_update_set.append(neighbor)
 		next_to_update = next_update_set
 
@@ -40,9 +51,9 @@ func get_free_neighbors(tm, filled, cell):
 			
 	return free
 	
-func get_first_populated(tm, filled, cell):
+func get_populated_after(tm, filled, cell):
 	var neighbors = tm.get_surrounding_cells(cell)
-	var free = []
+	var pop = []
 	
 	neighbors.append(neighbors[0])
 	var can_return = false
@@ -52,36 +63,65 @@ func get_first_populated(tm, filled, cell):
 			can_return = true
 		else:
 			if can_return:
-				return n
+				pop.append(n)
+				can_return = false
+				
+	return pop
 
-func regenerate_mesh():
-	var tm = $TileMap
-	var used_cells = tm.get_used_cells(0)
+func first_not_populated_not_in(tm, filled, cell, not_in):
+	var next_populated = get_populated_after(tm, filled, cell)
+	for next in next_populated:
+		if next not in not_in:
+			return next
+	if next_populated.size() == 0:
+		return null
+	return next_populated[0]
 	
-	var edge = []
+func drill_collide(location: Vector2):
+	last_frame.push_back(location)
+	for entry in queue:
+		if entry[0] == location:
+			return
+	queue.push_back([location, 0.15])
+		
+func drill_collide_internal(location: Vector2):
+	var tm = self
+	var local = global_transform.inverse() * location;
+	var tile_pos = tm.local_to_map(local)
 	
-	var start_cell = used_cells[used_cells.size() - 1];
-	while get_free_neighbors(tm, used_cells, start_cell).size() == 0:
-		var surround = tm.get_surrounding_cells(start_cell)
-		start_cell = surround[0]
+	var cell_type = tm.get_cell_source_id(0, tile_pos)
 	
-	edge.append(tm.map_to_local(start_cell))
-	var raw_edge = [start_cell]
-	var last = start_cell
+	# tm.clear()
+	tm.erase_cell(0, tile_pos)
 	
-	while true:
-		var next = get_first_populated(tm, used_cells, last)
-		if next == null:
-			break
-		if next not in raw_edge:
-			edge.append(tm.map_to_local(next))
-			raw_edge.append(next)
-			last = next
-		else:
-			break
+	tm.update_internals()
 	
-	$Collider.polygon = PackedVector2Array(edge)
+	if cell_type != -1:
+		match cell_type:
+			0, 1, 2:
+				$"../../Player2/Inventory".add_new_resource("ice", 1)
+			4:
+				$"../../Player2/Inventory".add_new_resource("amulite", 1)
+			5, 6, 7:
+				$"../../Player2/Inventory".add_new_resource("metal", 1)
+			9, 10, 11, 12:
+				$"../../Player2/Inventory".add_new_resource("silicates", 1)
+			13, 14, 15, 16:
+				$"../../Player2/Inventory".add_new_resource("carbon", 1)
+			17:
+				$"../../Player2/Inventory".add_new_resource("exotics", 1)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	for entry in queue:
+		entry[1] -= delta
+	var i = 0;
+	while i < queue.size():
+		if queue[i][1] < 0:
+			# if queue[i][0] in last_frame:
+			self.drill_collide_internal(queue[i][0])
+			queue.remove_at(i)
+		else:
+			i += 1
+			
+	last_frame = []

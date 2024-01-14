@@ -1,34 +1,33 @@
 extends Node
 
+@export var list_of_asteroids = []
+@export var generated_area = 2500
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var rng = RandomNumberGenerator.new()
 	
-	for i in range(100):
-		var location = Vector2i(rng.randi_range(-2500, 2500), rng.randi_range(-2500,2500))
-		add_child(generate_asteroid(location))
+	for i in range(50):
+		var location = Vector2i(rng.randi_range(-generated_area, generated_area), rng.randi_range(-generated_area,generated_area))
+		var new_asteroid = generate_asteroid(location)
+		list_of_asteroids.append(new_asteroid)
+		add_child(new_asteroid)
 
 func generate_asteroid(location: Vector2i):
 	var asteroid_script = load("res://Asteroid.gd")
 	
-	var asteroid = RigidBody2D.new()
 	var tile_map = TileMap.new()
 	
 	tile_map.tile_set = load("res://Scene.tscn::TileSet_r887t")
 	tile_map.add_layer(-1)
 	tile_map.name = "TileMap"
 	
-	var collider = CollisionPolygon2D.new()
-	collider.name = "Collider"
+	tile_map.set_script(asteroid_script)
 	
-	asteroid.set_script(asteroid_script)
 	
-	asteroid.add_child(tile_map)
-	asteroid.add_child(collider)
+	tile_map.transform = Transform2D.IDENTITY.translated(location)
 	
-	asteroid.transform = Transform2D.IDENTITY.translated(location)
-	
-	return asteroid
+	return tile_map
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
