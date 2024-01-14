@@ -184,7 +184,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fro2s"]
-size = Vector2(32, 18)
+size = Vector2(28, 18)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a0hqo"]
 texture = ExtResource("8_dchvf")
@@ -410,6 +410,16 @@ position = Vector2(-8, -5)
 target_position = Vector2(-12, 0)
 script = ExtResource("7_hmudl")
 
+[node name="RayCast2D6" type="RayCast2D" parent="Player2/AnimatedSprite2D/RayCast2D6"]
+position = Vector2(0, 4)
+target_position = Vector2(-12, 0)
+script = ExtResource("7_hmudl")
+
+[node name="RayCast2D6" type="RayCast2D" parent="Player2/AnimatedSprite2D/RayCast2D6/RayCast2D6"]
+position = Vector2(0, 5)
+target_position = Vector2(-12, 0)
+script = ExtResource("7_hmudl")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player2"]
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_fro2s")
@@ -454,6 +464,25 @@ offset_bottom = -54.0
 [node name="RayCast2D5" type="RayCast2D" parent="."]
 position = Vector2(7, -5)
 target_position = Vector2(12, 0)
+script = ExtResource("7_hmudl")
+
+[node name="RayCast2D5" type="RayCast2D" parent="RayCast2D5"]
+position = Vector2(0, 4)
+target_position = Vector2(12, 0)
+script = ExtResource("7_hmudl")
+
+[node name="RayCast2D5" type="RayCast2D" parent="RayCast2D5/RayCast2D5"]
+position = Vector2(0, 5)
+target_position = Vector2(12, 0)
+script = ExtResource("7_hmudl")
+
+[node name="RayCast2D5" type="RayCast2D" parent="RayCast2D5/RayCast2D5/RayCast2D5"]
+target_position = Vector2(8, 5)
+script = ExtResource("7_hmudl")
+
+[node name="RayCast2D5" type="RayCast2D" parent="RayCast2D5/RayCast2D5/RayCast2D5/RayCast2D5"]
+position = Vector2(-15, 0)
+target_position = Vector2(-6, 5)
 script = ExtResource("7_hmudl")
 
 [connection signal="body_entered" from="Player2" to="Player2/Inventory" method="_on_player_2_body_entered"]
