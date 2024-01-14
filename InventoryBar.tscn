@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dmmirawoydmlc" path="res://Sprites/Resources/AmuliteChunk.png" id="4_605si"]
 [ext_resource type="Texture2D" uid="uid://poof313h0ntm" path="res://Sprites/Resources/RefinedIron.png" id="5_6630j"]
 [ext_resource type="Texture2D" uid="uid://ch6cgw6vaxcqx" path="res://Sprites/Resources/CopperChunk.png" id="6_8h2a5"]
-[ext_resource type="Texture2D" uid="uid://dg7dhknmbmw71" path="res://Sprites/Resources/SPACEBRICK.png" id="6_ot3i7"]
+[ext_resource type="Texture2D" uid="uid://q8fxofaeos4d" path="res://Sprites/Resources/SPACEBRICK.png" id="6_ot3i7"]
 
 [node name="InventoryBar" type="Control"]
 layout_mode = 3
@@ -41,6 +41,7 @@ offset_bottom = 40.0
 texture = ExtResource("2_mc6g8")
 
 [node name="CarbonBox" type="ColorRect" parent="."]
+layout_mode = 0
 offset_left = -177.0
 offset_top = -90.0
 offset_right = -137.0
@@ -48,6 +49,7 @@ offset_bottom = -50.0
 color = Color(0, 0, 0, 0.568627)
 
 [node name="CarbonQty" type="RichTextLabel" parent="CarbonBox"]
+layout_mode = 0
 offset_top = -20.0
 offset_right = 40.0
 offset_bottom = 20.0
@@ -60,6 +62,7 @@ offset_bottom = 40.0
 texture = ExtResource("3_s0lqc")
 
 [node name="AmuliteBox" type="ColorRect" parent="."]
+layout_mode = 0
 offset_left = -227.0
 offset_top = -90.0
 offset_right = -187.0
@@ -67,6 +70,7 @@ offset_bottom = -50.0
 color = Color(1, 0.556863, 0, 0.360784)
 
 [node name="AmuliteQty" type="RichTextLabel" parent="AmuliteBox"]
+layout_mode = 0
 offset_top = -20.0
 offset_right = 40.0
 offset_bottom = 20.0
@@ -79,6 +83,7 @@ offset_bottom = 40.0
 texture = ExtResource("4_605si")
 
 [node name="MetalBox" type="ColorRect" parent="."]
+layout_mode = 0
 offset_left = -277.0
 offset_top = -90.0
 offset_right = -237.0
@@ -86,6 +91,7 @@ offset_bottom = -50.0
 color = Color(0.164706, 0.164706, 0.164706, 0.360784)
 
 [node name="MetalQty" type="RichTextLabel" parent="MetalBox"]
+layout_mode = 0
 offset_top = -20.0
 offset_right = 40.0
 offset_bottom = 20.0
@@ -98,6 +104,7 @@ offset_bottom = 40.0
 texture = ExtResource("5_6630j")
 
 [node name="SilicatesBox" type="ColorRect" parent="."]
+layout_mode = 0
 offset_left = -327.0
 offset_top = -90.0
 offset_right = -287.0
@@ -105,6 +112,7 @@ offset_bottom = -50.0
 color = Color(1, 0, 0, 0.341176)
 
 [node name="SilicatesQty" type="RichTextLabel" parent="SilicatesBox"]
+layout_mode = 0
 offset_top = -20.0
 offset_right = 40.0
 offset_bottom = 20.0
@@ -117,6 +125,7 @@ offset_bottom = 40.0
 texture = ExtResource("6_ot3i7")
 
 [node name="ExoticsBox" type="ColorRect" parent="."]
+layout_mode = 0
 offset_left = -127.0
 offset_top = -90.0
 offset_right = -87.0
@@ -124,6 +133,7 @@ offset_bottom = -50.0
 color = Color(0, 1, 1, 0.360784)
 
 [node name="ExoticsQty" type="RichTextLabel" parent="ExoticsBox"]
+layout_mode = 0
 offset_top = -20.0
 offset_right = 40.0
 offset_bottom = 20.0
