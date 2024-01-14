@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://eyqq1gfbjyvg"]
+[gd_scene load_steps=7 format=3 uid="uid://eyqq1gfbjyvg"]
 
 [ext_resource type="Script" path="res://InventoryBar.gd" id="1_n5cka"]
+[ext_resource type="Texture2D" uid="uid://bic13idsvs2oi" path="res://Sprites/Resources/IceCube.png" id="2_mc6g8"]
+[ext_resource type="Texture2D" uid="uid://c5pnw2kgkfcsr" path="res://Sprites/Resources/CarbonBlock.png" id="3_s0lqc"]
+[ext_resource type="Texture2D" uid="uid://dmmirawoydmlc" path="res://Sprites/Resources/AmuliteChunk.png" id="4_605si"]
+[ext_resource type="Texture2D" uid="uid://poof313h0ntm" path="res://Sprites/Resources/RefinedIron.png" id="5_6630j"]
+[ext_resource type="Texture2D" uid="uid://ch6cgw6vaxcqx" path="res://Sprites/Resources/CopperChunk.png" id="6_8h2a5"]
 
 [node name="InventoryBar" type="Control"]
 layout_mode = 3
@@ -27,6 +32,12 @@ offset_right = 40.0
 offset_bottom = 40.0
 text = "0"
 
+[node name="TextureRect" type="TextureRect" parent="IceBox"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_mc6g8")
+
 [node name="CarbonBox" type="ColorRect" parent="."]
 offset_left = -177.0
 offset_top = -90.0
@@ -38,6 +49,12 @@ color = Color(0, 0, 0, 0.568627)
 offset_right = 40.0
 offset_bottom = 40.0
 text = "0"
+
+[node name="TextureRect" type="TextureRect" parent="CarbonBox"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_s0lqc")
 
 [node name="AmuliteBox" type="ColorRect" parent="."]
 offset_left = -227.0
@@ -51,6 +68,12 @@ offset_right = 40.0
 offset_bottom = 40.0
 text = "0"
 
+[node name="TextureRect" type="TextureRect" parent="AmuliteBox"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_605si")
+
 [node name="MetalBox" type="ColorRect" parent="."]
 offset_left = -277.0
 offset_top = -90.0
@@ -62,6 +85,12 @@ color = Color(0.164706, 0.164706, 0.164706, 0.360784)
 offset_right = 40.0
 offset_bottom = 40.0
 text = "0"
+
+[node name="TextureRect" type="TextureRect" parent="MetalBox"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5_6630j")
 
 [node name="SilicatesBox" type="ColorRect" parent="."]
 offset_left = -327.0
@@ -75,6 +104,11 @@ offset_right = 40.0
 offset_bottom = 40.0
 text = "0"
 
+[node name="TextureRect" type="TextureRect" parent="SilicatesBox"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="ExoticsBox" type="ColorRect" parent="."]
 offset_left = -127.0
 offset_top = -90.0
@@ -86,3 +120,9 @@ color = Color(0, 1, 1, 0.360784)
 offset_right = 40.0
 offset_bottom = 40.0
 text = "0"
+
+[node name="TextureRect" type="TextureRect" parent="ExoticsBox"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("6_8h2a5")
