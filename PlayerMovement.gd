@@ -81,7 +81,6 @@ func get_input(delta):
 		self.apply_torque(delta_rotation * torque)
 		
 	if self.get_contact_count() > 1:
-		print("Stuck!")
 		#self.set_collision_mask_value(1, false)
 		self.apply_impulse((Vector2(0, 1) * 4000).rotated(self.rotation))
 		#for x in self.get_colliding_bodies():
@@ -92,7 +91,7 @@ func get_input(delta):
 func _physics_process(delta):
 	get_input(delta)
 	
-	self.mass = $Inventory.get_total_count() * 0.25 + 100
+	self.mass = $Inventory.get_total_count() * 0.25 + 1000
 	
 	last_tick_rate = self.linear_velocity.length()
 	#move_and_slide()
