@@ -19,9 +19,9 @@ func generate_tile_map():
 		
 		for update_tile in next_to_update:
 			if i < 6:
-				tm.set_cell(0, update_tile, 1, Vector2i(0, 0))
+				tm.set_cell(0, update_tile, 3, Vector2i(0, 0))
 			else:
-				tm.set_cell(0, update_tile, 0, Vector2i(0, 0))
+				tm.set_cell(0, update_tile, rng.randi_range(0,2), Vector2i(0, 0))
 				
 			var pattern = tm.get_pattern(0, tm.get_surrounding_cells(update_tile))
 			for neighbor in tm.get_surrounding_cells(update_tile):
@@ -60,9 +60,10 @@ func regenerate_mesh():
 	
 	var edge = []
 	
-	var start_cell = used_cells[0];
+	var start_cell = used_cells[used_cells.size() - 1];
 	while get_free_neighbors(tm, used_cells, start_cell).size() == 0:
-		start_cell = tm.get_surrounding_cells(start_cell)[0]
+		var surround = tm.get_surrounding_cells(start_cell)
+		start_cell = surround[0]
 	
 	edge.append(tm.map_to_local(start_cell))
 	var raw_edge = [start_cell]
@@ -71,6 +72,8 @@ func regenerate_mesh():
 	while true:
 		print(last)
 		var next = get_first_populated(tm, used_cells, last)
+		if next == null:
+			break
 		if next not in raw_edge:
 			edge.append(tm.map_to_local(next))
 			raw_edge.append(next)

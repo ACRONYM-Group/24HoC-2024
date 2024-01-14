@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://n57clg7rclx1"
-path="res://.godot/imported/Thruster.png-3bca784de628461e908bb2398f08beb8.ctex"
+uid="uid://u1alvyyh6y0c"
+path="res://.godot/imported/Asteroid_Hextile_Ice0.png-ebfee442bc2be34e44866677033feae4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Thruster.png"
-dest_files=["res://.godot/imported/Thruster.png-3bca784de628461e908bb2398f08beb8.ctex"]
+source_file="res://Sprites/Tiles/Asteroid_Hextile_Ice0.png"
+dest_files=["res://.godot/imported/Asteroid_Hextile_Ice0.png-ebfee442bc2be34e44866677033feae4.ctex"]
 
 [params]
 

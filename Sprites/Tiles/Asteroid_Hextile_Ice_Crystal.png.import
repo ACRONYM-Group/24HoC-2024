@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://kq7ymhvyexdn"
-path="res://.godot/imported/Asteroid_Hextile_Iron.png-2c34849010eb58f7f3574d63395a04f5.ctex"
+uid="uid://6j10pt43ipeg"
+path="res://.godot/imported/Asteroid_Hextile_Ice_Crystal.png-49d1b33c5739dcc4034265993e76fd14.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asteroid_Hextile_Iron.png"
-dest_files=["res://.godot/imported/Asteroid_Hextile_Iron.png-2c34849010eb58f7f3574d63395a04f5.ctex"]
+source_file="res://Sprites/Tiles/Asteroid_Hextile_Ice_Crystal.png"
+dest_files=["res://.godot/imported/Asteroid_Hextile_Ice_Crystal.png-49d1b33c5739dcc4034265993e76fd14.ctex"]
 
 [params]
 
