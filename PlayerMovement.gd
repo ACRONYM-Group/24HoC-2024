@@ -22,12 +22,23 @@ func set_allow_input(state):
 
 func get_input(delta):
 	var input_direction = Input.get_vector("left", "right", "up", "down")
-	var delta_rotation = Input.get_vector("rotate_left", "rotate_right", "", "").x
+	var delta_rotation = Input.get_axis("rotate_left", "rotate_right")
 
 	rot_vel *= 1.0 - (3 * delta)
-	if allow_input == true:
-		$AnimatedSprite2D/LeftThruster.reset()
-		$AnimatedSprite2D/RightThruster.reset()
+	
+	if Input.is_action_pressed("thrust"):
+		apply_central_force((Vector2(0, -1) * 2 * main_thrust).rotated(self.rotation))
+
+	if input_direction.length() > 0:
+		apply_central_force((input_direction * 2 * rcs_thrust).rotated(self.rotation))
+	
+	apply_torque(delta_rotation * torque * 5)
+	
+	$AnimatedSprite2D/LeftThruster.reset()
+	$AnimatedSprite2D/RightThruster.reset()
+	
+	if ( Input.is_action_just_pressed("left") || Input.is_action_just_pressed("right") || Input.is_action_just_pressed("up") || Input.is_action_just_pressed("down")) and input_direction != Vector2(0, 0):
+		$"../AudioStreamPlayer".play(0.0)
 		
 		if ( Input.is_action_just_pressed("left") || Input.is_action_just_pressed("right") || Input.is_action_just_pressed("up") || Input.is_action_just_pressed("down")) and input_direction != Vector2(0, 0):
 			$"../AudioStreamPlayer".play(0.0)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://n57clg7rclx1"
-path="res://.godot/imported/Thruster.png-3bca784de628461e908bb2398f08beb8.ctex"
+uid="uid://dbxm70fr57x2a"
+path="res://.godot/imported/PrefabulatedAmulite.png-e02b5847adac5fde31558f8da508ff52.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Thruster.png"
-dest_files=["res://.godot/imported/Thruster.png-3bca784de628461e908bb2398f08beb8.ctex"]
+source_file="res://Sprites/Resources/PrefabulatedAmulite.png"
+dest_files=["res://.godot/imported/PrefabulatedAmulite.png-e02b5847adac5fde31558f8da508ff52.ctex"]
 
 [params]
 
