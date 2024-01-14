@@ -70,7 +70,6 @@ func regenerate_mesh():
 	var last = start_cell
 	
 	while true:
-		print(last)
 		var next = get_first_populated(tm, used_cells, last)
 		if next == null:
 			break
