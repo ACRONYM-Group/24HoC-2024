@@ -13,7 +13,7 @@ func _ready():
 func generate_random():
 	var rng = RandomNumberGenerator.new()
 	var size = rng.randi_range(6, 12)
-	var types = [[4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16], [17]]
+	var types = [[3,4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16], [17]]
 	var index = rng.randi_range(0, types.size() - 1)
 	
 	generate_tile_map(types[index], size)
@@ -102,7 +102,7 @@ func drill_collide_internal(location: Vector2):
 		match cell_type:
 			0, 1, 2:
 				$"../../Player2/Inventory".add_new_resource("ice", 1)
-			4:
+			3, 4:
 				$"../../Player2/Inventory".add_new_resource("amulite", 1)
 			5, 6, 7:
 				$"../../Player2/Inventory".add_new_resource("metal", 1)
