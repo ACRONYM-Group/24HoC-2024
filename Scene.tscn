@@ -184,7 +184,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fro2s"]
-size = Vector2(30, 18)
+size = Vector2(32, 18)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a0hqo"]
 texture = ExtResource("8_dchvf")
@@ -347,6 +347,7 @@ sources/17 = SubResource("TileSetAtlasSource_qpnjc")
 script = ExtResource("1_23tfu")
 
 [node name="background" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(3, 269)
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("2_x8onv")
@@ -375,9 +376,9 @@ rotation_smoothing_enabled = true
 script = ExtResource("7_g1up4")
 
 [node name="LeftThruster" type="AnimatedSprite2D" parent="Player2/AnimatedSprite2D"]
-position = Vector2(-22.625, -5.0625)
+position = Vector2(-22, -5)
 rotation = -1.5708
-scale = Vector2(1, 1.019)
+scale = Vector2(1, 0.939541)
 sprite_frames = SubResource("SpriteFrames_4jrmk")
 animation = &"Thrust0"
 script = ExtResource("5_ytjv8")
@@ -405,9 +406,9 @@ position = Vector2(-9, -10)
 target_position = Vector2(0, -15)
 script = ExtResource("7_hmudl")
 
-[node name="RayCast2D5" type="RayCast2D" parent="Player2/AnimatedSprite2D"]
-position = Vector2(-15, -10)
-target_position = Vector2(0, -15)
+[node name="RayCast2D6" type="RayCast2D" parent="Player2/AnimatedSprite2D"]
+position = Vector2(-8, -5)
+target_position = Vector2(-12, 0)
 script = ExtResource("7_hmudl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player2"]
@@ -451,9 +452,9 @@ offset_bottom = -54.0
 
 [node name="Minimap" parent="MiniMap" instance=ExtResource("32_5xsfn")]
 
-[node name="RayCast2D3" type="RayCast2D" parent="."]
-position = Vector2(16, -10)
-target_position = Vector2(0, -15)
+[node name="RayCast2D5" type="RayCast2D" parent="."]
+position = Vector2(7, -5)
+target_position = Vector2(12, 0)
 script = ExtResource("7_hmudl")
 
 [connection signal="body_entered" from="Player2" to="Player2/Inventory" method="_on_player_2_body_entered"]
