@@ -1,11 +1,13 @@
-[gd_scene load_steps=67 format=3 uid="uid://clrqwmrb6mddi"]
+[gd_scene load_steps=69 format=3 uid="uid://cou5ph7kcnn7x"]
 
 [ext_resource type="Script" path="res://Scene.gd" id="1_23tfu"]
-[ext_resource type="Texture2D" uid="uid://bxnjer5uhwsjs" path="res://Images/HubbleBackground.png" id="1_tg3wu"]
 [ext_resource type="Script" path="res://PlayerMovement.gd" id="1_u6bc0"]
+[ext_resource type="Texture2D" uid="uid://dts4jvjjgfn7x" path="res://Images/Saturn_Background.png" id="2_x8onv"]
 [ext_resource type="Texture2D" uid="uid://isfvtg2foor8" path="res://Sprites/Miner/miner_spritesheet.png" id="3_cpou3"]
 [ext_resource type="Texture2D" uid="uid://l0xsibf22447" path="res://Sprites/Miner/Thruster.png" id="4_s2c4n"]
+[ext_resource type="AudioStream" uid="uid://y7mmtq7sob7u" path="res://Sounds/Hammer-Pulse.mp3" id="4_wnorf"]
 [ext_resource type="Script" path="res://Thruster.gd" id="5_ytjv8"]
+[ext_resource type="Script" path="res://CameraZoom.gd" id="7_g1up4"]
 [ext_resource type="Script" path="res://MiningCollider.gd" id="7_hmudl"]
 [ext_resource type="AudioStream" uid="uid://dhbtg7dpc0tuu" path="res://Sounds/Steam Puff.mp3" id="7_vcox7"]
 [ext_resource type="PackedScene" path="res://EscapeMenu.tscn" id="8_5jshb"]
@@ -24,13 +26,14 @@
 [ext_resource type="Texture2D" uid="uid://cvt2wy22hylkq" path="res://Sprites/Tiles/Asteroid_Hextile_Carbon0.png" id="15_twigs"]
 [ext_resource type="Texture2D" uid="uid://ct5baet7x1jd8" path="res://Sprites/Tiles/Asteroid_Hextile_Carbon1.png" id="16_adf45"]
 [ext_resource type="Texture2D" uid="uid://bkek8rm71n4x1" path="res://Sprites/Tiles/Asteroid_Hextile_Metals2.png" id="16_n1gnu"]
-[ext_resource type="PackedScene" path="res://InventoryBar.tscn" id="16_rlqqm"]
+[ext_resource type="PackedScene" uid="uid://eyqq1gfbjyvg" path="res://InventoryBar.tscn" id="16_rlqqm"]
 [ext_resource type="Texture2D" uid="uid://burmggrhb2hs6" path="res://Sprites/Tiles/Asteroid_Hextile_Carbon2.png" id="17_2ekms"]
 [ext_resource type="PackedScene" path="res://StatBars.tscn" id="17_46saa"]
 [ext_resource type="Texture2D" uid="uid://cwo7xtochsghj" path="res://Sprites/Tiles/Asteroid_Hextile_Metals3.png" id="17_h21yj"]
 [ext_resource type="Texture2D" uid="uid://2j76hht4gd5a" path="res://Sprites/Tiles/Asteroid_Hextile_Carbon3.png" id="18_4eeql"]
 [ext_resource type="Texture2D" uid="uid://h4bq87frau84" path="res://Sprites/Tiles/Asteroid_Hextile_Copper.png" id="19_da3kw"]
 [ext_resource type="Texture2D" uid="uid://bm4p7c61wc00y" path="res://Sprites/Tiles/Asteroid_Hextile_Silicates0.png" id="21_spt3l"]
+[ext_resource type="PackedScene" path="res://Minimap.tscn" id="32_5xsfn"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7gnyr"]
 random_pitch = 1.2
@@ -39,9 +42,7 @@ stream_0/stream = ExtResource("7_vcox7")
 stream_0/weight = 1.0
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_74xrq"]
-friction = 0.25
 rough = true
-bounce = 0.1
 absorbent = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3k5ot"]
@@ -183,13 +184,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fro2s"]
-size = Vector2(30, 18)
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7hdob"]
-friction = 0.4
-rough = true
-bounce = 0.1
-absorbent = true
+size = Vector2(28, 18)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a0hqo"]
 texture = ExtResource("8_dchvf")
@@ -330,7 +325,6 @@ tile_layout = 4
 tile_offset_axis = 1
 tile_size = Vector2i(14, 12)
 physics_layer_0/collision_layer = 1
-physics_layer_0/physics_material = SubResource("PhysicsMaterial_7hdob")
 sources/0 = SubResource("TileSetAtlasSource_a0hqo")
 sources/1 = SubResource("TileSetAtlasSource_blas7")
 sources/2 = SubResource("TileSetAtlasSource_qghup")
@@ -353,17 +347,22 @@ sources/17 = SubResource("TileSetAtlasSource_qpnjc")
 script = ExtResource("1_23tfu")
 
 [node name="background" type="Sprite2D" parent="."]
-scale = Vector2(2, 2)
-texture = ExtResource("1_tg3wu")
+position = Vector2(3, 269)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_x8onv")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_7gnyr")
 pitch_scale = 0.1
 
+[node name="DrillSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_wnorf")
+
 [node name="Player2" type="RigidBody2D" parent="."]
-mass = 100.0
 physics_material_override = SubResource("PhysicsMaterial_74xrq")
 gravity_scale = 0.0
+max_contacts_reported = 10
+contact_monitor = true
 script = ExtResource("1_u6bc0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player2"]
@@ -373,6 +372,7 @@ sprite_frames = SubResource("SpriteFrames_g1gax")
 ignore_rotation = false
 position_smoothing_speed = 50.0
 rotation_smoothing_enabled = true
+script = ExtResource("7_g1up4")
 
 [node name="LeftThruster" type="AnimatedSprite2D" parent="Player2/AnimatedSprite2D"]
 position = Vector2(-22.625, -5.0625)
@@ -392,17 +392,17 @@ script = ExtResource("5_ytjv8")
 
 [node name="RayCast2D3" type="RayCast2D" parent="Player2/AnimatedSprite2D"]
 position = Vector2(0, -10)
-target_position = Vector2(0, -21)
+target_position = Vector2(0, -15)
 script = ExtResource("7_hmudl")
 
 [node name="RayCast2D" type="RayCast2D" parent="Player2/AnimatedSprite2D"]
-position = Vector2(11, -10)
-target_position = Vector2(0, -21)
+position = Vector2(9, -10)
+target_position = Vector2(0, -15)
 script = ExtResource("7_hmudl")
 
 [node name="RayCast2D2" type="RayCast2D" parent="Player2/AnimatedSprite2D"]
-position = Vector2(-11, -10)
-target_position = Vector2(0, -21)
+position = Vector2(-9, -10)
+target_position = Vector2(0, -15)
 script = ExtResource("7_hmudl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player2"]
@@ -445,3 +445,6 @@ offset_bottom = -54.0
 [node name="MiniMap" type="CanvasLayer" parent="."]
 
 [node name="Minimap" parent="MiniMap" instance=ExtResource("32_5xsfn")]
+
+[connection signal="body_entered" from="Player2" to="Player2/Inventory" method="_on_player_2_body_entered"]
+[connection signal="body_shape_entered" from="Player2" to="Player2/Inventory" method="_on_player_2_body_shape_entered"]
