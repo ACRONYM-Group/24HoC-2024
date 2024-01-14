@@ -9,7 +9,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	#print(str($CanvasLayer.visible) + " " + str(not $CanvasLayer.visible))
-	print($Player2.position)
+	print($Player2.positionwww)
 	$background.position = $Player2.position
 	if (not $CanvasLayer.visible) == true:
 		#print("True")

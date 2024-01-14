@@ -28,7 +28,7 @@ func get_input(delta):
 	if input_direction.length() > 0:
 		apply_central_force((input_direction * 2 * rcs_thrust).rotated(self.rotation))
 	
-	apply_torque(delta_rotation * torque * 5)
+	apply_torque(delta_rotation * torque)
 	
 	$AnimatedSprite2D/LeftThruster.reset()
 	$AnimatedSprite2D/RightThruster.reset()
