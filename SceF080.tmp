@@ -176,6 +176,10 @@ pitch_scale = 0.1
 [node name="Player2" type="RigidBody2D" parent="."]
 gravity_scale = 0.0
 script = ExtResource("1_u6bc0")
+accel_rate = null
+rotation_rate = null
+max_rotation_rate = null
+allow_input = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player2"]
 sprite_frames = SubResource("SpriteFrames_g1gax")
@@ -217,12 +221,9 @@ position = Vector2(-308, -164)
 shape = SubResource("RectangleShape2D_qilil")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-process_mode = 3
-visible = false
 script = ExtResource("9_5y217")
 
 [node name="EscapeMenu" parent="CanvasLayer" instance=ExtResource("8_5jshb")]
-process_mode = 3
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
