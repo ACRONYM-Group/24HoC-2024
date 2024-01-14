@@ -23,12 +23,12 @@ func get_input(delta):
 	rot_vel *= 1.0 - (3 * delta)
 	
 	if Input.is_action_pressed("thrust"):
-		apply_central_force((Vector2(0, -1) * 2 * main_thrust).rotated(self.rotation))
+		apply_central_force((Vector2(0, -1) * 200 * main_thrust).rotated(self.rotation))
 
 	if input_direction.length() > 0:
-		apply_central_force((input_direction * 2 * rcs_thrust).rotated(self.rotation))
+		apply_central_force((input_direction * 200 * rcs_thrust).rotated(self.rotation))
 	
-	apply_torque(delta_rotation * torque)
+	apply_torque(delta_rotation * torque * 100)
 	
 	$AnimatedSprite2D/LeftThruster.reset()
 	$AnimatedSprite2D/RightThruster.reset()
@@ -81,4 +81,6 @@ func get_input(delta):
 
 func _physics_process(delta):
 	get_input(delta)
+	
+	self.mass = $Inventory.get_total_count() * 0.25 + 100
 	#move_and_slide()

@@ -3,10 +3,12 @@ extends TileMap
 const ICE_TILE = Vector2i(0, 0)
 const ROCK_TILE = Vector2i(0, 1)
 
+var queue = []
+var last_frame = []
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	generate_random()
-	regenerate_mesh()
 	
 func generate_random():
 	var rng = RandomNumberGenerator.new()
@@ -74,46 +76,15 @@ func first_not_populated_not_in(tm, filled, cell, not_in):
 	if next_populated.size() == 0:
 		return null
 	return next_populated[0]
-
-func regenerate_mesh():
-	"""
-	var tm = $TileMap
-	var used_cells = tm.get_used_cells(0)
 	
-	for current in used_cells:
-		if get_free_neighbors(tm, used_cells, current).size() == 6:
-			tm.erase_cell(0, current)
-			
-	used_cells = tm.get_used_cells(0)
-	
-	if used_cells.size() < 2:
-		return
-	
-	var edge = []
-	
-	var start_cell = used_cells[used_cells.size() - 1];
-	while get_free_neighbors(tm, used_cells, start_cell).size() == 0:
-		var surround = tm.get_surrounding_cells(start_cell)
-		start_cell = surround[0]
-	
-	edge.append(tm.map_to_local(start_cell))
-	var raw_edge = [start_cell]
-	var last = start_cell
-	
-	while true:
-		var next = first_not_populated_not_in(tm, used_cells, last, raw_edge)
-		if next == null:
-			break
-		if next != raw_edge[0]:
-			edge.append(tm.map_to_local(next))
-			raw_edge.append(next)
-			last = next
-		else:
-			break
-	
-	$Collider.set_deferred("polygon", PackedVector2Array(edge))"""
-
 func drill_collide(location: Vector2):
+	last_frame.push_back(location)
+	for entry in queue:
+		if entry[0] == location:
+			return
+	queue.push_back([location, 0.15])
+		
+func drill_collide_internal(location: Vector2):
 	var tm = self
 	var local = global_transform.inverse() * location;
 	var tile_pos = tm.local_to_map(local)
@@ -123,7 +94,6 @@ func drill_collide(location: Vector2):
 	# tm.clear()
 	tm.erase_cell(0, tile_pos)
 	
-	regenerate_mesh()
 	tm.update_internals()
 	
 	if cell_type != -1:
@@ -142,9 +112,18 @@ func drill_collide(location: Vector2):
 				$"../../Player2/Inventory".add_new_resource("carbon", 1)
 			17:
 				$"../../Player2/Inventory".add_new_resource("exotics", 1)
-		
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	for entry in queue:
+		entry[1] -= delta
+	var i = 0;
+	while i < queue.size():
+		if queue[i][1] < 0:
+			# if queue[i][0] in last_frame:
+			self.drill_collide_internal(queue[i][0])
+			queue.remove_at(i)
+		else:
+			i += 1
+			
+	last_frame = []
