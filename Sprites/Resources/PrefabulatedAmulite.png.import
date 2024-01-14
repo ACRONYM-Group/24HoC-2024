@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://br8mm00nlc8x7"
-path="res://.godot/imported/Asteroid_Hextile_Ice.png-62b0877d1e5dba6a79c83c4d2cd362d1.ctex"
+uid="uid://dbxm70fr57x2a"
+path="res://.godot/imported/PrefabulatedAmulite.png-e02b5847adac5fde31558f8da508ff52.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asteroid_Hextile_Ice.png"
-dest_files=["res://.godot/imported/Asteroid_Hextile_Ice.png-62b0877d1e5dba6a79c83c4d2cd362d1.ctex"]
+source_file="res://Sprites/Resources/PrefabulatedAmulite.png"
+dest_files=["res://.godot/imported/PrefabulatedAmulite.png-e02b5847adac5fde31558f8da508ff52.ctex"]
 
 [params]
 
