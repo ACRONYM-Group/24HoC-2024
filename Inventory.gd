@@ -12,6 +12,9 @@ extends Node
 func _ready():
 	pass # Replace with function body.
 
+func get_total_count():
+	return ice_quantity + metal_quantity + amulite_quantity + carbon_quantity + exotics_quantity + silicates_quantity
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
