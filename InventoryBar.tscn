@@ -1,0 +1,88 @@
+[gd_scene load_steps=2 format=3 uid="uid://eyqq1gfbjyvg"]
+
+[ext_resource type="Script" path="res://InventoryBar.gd" id="1_n5cka"]
+
+[node name="InventoryBar" type="Control"]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+script = ExtResource("1_n5cka")
+
+[node name="IceBox" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -77.0
+offset_top = -90.0
+offset_right = -37.0
+offset_bottom = -50.0
+color = Color(0, 0.0352941, 1, 0.360784)
+
+[node name="IceQty" type="RichTextLabel" parent="IceBox"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+text = "0"
+
+[node name="CarbonBox" type="ColorRect" parent="."]
+offset_left = -177.0
+offset_top = -90.0
+offset_right = -137.0
+offset_bottom = -50.0
+color = Color(0, 0, 0, 0.568627)
+
+[node name="CarbonQty" type="RichTextLabel" parent="CarbonBox"]
+offset_right = 40.0
+offset_bottom = 40.0
+text = "0"
+
+[node name="AmuliteBox" type="ColorRect" parent="."]
+offset_left = -227.0
+offset_top = -90.0
+offset_right = -187.0
+offset_bottom = -50.0
+color = Color(1, 0.556863, 0, 0.360784)
+
+[node name="AmuliteQty" type="RichTextLabel" parent="AmuliteBox"]
+offset_right = 40.0
+offset_bottom = 40.0
+text = "0"
+
+[node name="MetalBox" type="ColorRect" parent="."]
+offset_left = -277.0
+offset_top = -90.0
+offset_right = -237.0
+offset_bottom = -50.0
+color = Color(0.164706, 0.164706, 0.164706, 0.360784)
+
+[node name="MetalQty" type="RichTextLabel" parent="MetalBox"]
+offset_right = 40.0
+offset_bottom = 40.0
+text = "0"
+
+[node name="SilicatesBox" type="ColorRect" parent="."]
+offset_left = -327.0
+offset_top = -90.0
+offset_right = -287.0
+offset_bottom = -50.0
+color = Color(1, 1, 1, 0.360784)
+
+[node name="SilicatesQty" type="RichTextLabel" parent="SilicatesBox"]
+offset_right = 40.0
+offset_bottom = 40.0
+text = "0"
+
+[node name="ExoticsBox" type="ColorRect" parent="."]
+offset_left = -127.0
+offset_top = -90.0
+offset_right = -87.0
+offset_bottom = -50.0
+color = Color(0, 1, 1, 0.360784)
+
+[node name="ExoticsQty" type="RichTextLabel" parent="ExoticsBox"]
+offset_right = 40.0
+offset_bottom = 40.0
+text = "0"
