@@ -8,19 +8,21 @@ var last_frame = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	generate_random()
+	pass
 	
-func generate_random():
+func generate_random(rng_seed):
 	var rng = RandomNumberGenerator.new()
-	var size = rng.randi_range(6, 12)
+	rng.seed = rng_seed
+	var size = rng.randi_range(6, 7)
 	var types = [[3,4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16], [17]]
 	var index = rng.randi_range(0, types.size() - 1)
 	
-	generate_tile_map(types[index], size)
+	generate_tile_map(types[index], rng_seed, size)
 
-func generate_tile_map(material, size: int = 10):
+func generate_tile_map(material, rng_seed, size: int = 10):
 	var tm = self
 	var rng = RandomNumberGenerator.new()
+	rng.seed = rng_seed
 	
 	var next_to_update = [Vector2i(0, 0)]
 	
@@ -119,7 +121,8 @@ func _process(delta):
 		entry[1] -= delta
 	var i = 0;
 	while i < queue.size():
-		if queue[i][1] < 0:
+		print(queue.size())
+		if queue[i][1] < 0: #If timer has elapsed
 			# if queue[i][0] in last_frame:
 			self.drill_collide_internal(queue[i][0], queue[i][2])
 			queue.remove_at(i)

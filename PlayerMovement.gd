@@ -79,14 +79,13 @@ func get_input(delta):
 			self.apply_central_force((input_direction * rcs_thrust).rotated(self.rotation))
 		
 		self.apply_torque(delta_rotation * torque)
-
 		
 		
 
 func _physics_process(delta):
 	get_input(delta)
 	
-	self.mass = $Inventory.get_total_count() * 0.25 + 100
+	self.mass = $Inventory.get_total_count() * 0.25 + 1000
 	
 	last_tick_rate = self.linear_velocity.length()
 	#move_and_slide()

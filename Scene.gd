@@ -17,3 +17,5 @@ func _process(delta):
 		
 	$MiniMap/Minimap.render_map($Asteroids.list_of_asteroids, $Player2.position, $Asteroids.generated_area, $Player2.rotation)
 	
+	if abs($Player2.position.x - $Asteroids.last_generation_position.x) > $Asteroids.generated_area or abs($Player2.position.y - $Asteroids.last_generation_position.y) > $Asteroids.generated_area:
+		$Asteroids.generate_ring_tile($Player2.position)
