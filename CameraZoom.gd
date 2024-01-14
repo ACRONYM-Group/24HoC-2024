@@ -9,6 +9,10 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Input.is_action_just_released("zoom_scroll_in"):
-		zoom += Vector2(delta, delta) * 10
+		zoom *= 1.1
+		$"../../../background".scale.x = (1 / zoom.x)*3
+		$"../../../background".scale.y = (1 / zoom.y)*3
 	elif Input.is_action_just_released("zoom_scroll_out"):
-		zoom += Vector2(delta, delta) * -10
+		zoom *= 0.9
+		$"../../../background".scale.x = (1 / zoom.x)*3
+		$"../../../background".scale.y = (1 / zoom.y)*3
