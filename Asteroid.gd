@@ -13,7 +13,7 @@ func _ready():
 func generate_random():
 	var rng = RandomNumberGenerator.new()
 	var size = rng.randi_range(6, 12)
-	var types = [[4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16], [17]]
+	var types = [[3,4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16], [17]]
 	var index = rng.randi_range(0, types.size() - 1)
 	
 	generate_tile_map(types[index], size)
@@ -77,14 +77,14 @@ func first_not_populated_not_in(tm, filled, cell, not_in):
 		return null
 	return next_populated[0]
 	
-func drill_collide(location: Vector2):
+func drill_collide(location: Vector2, collect: bool):
 	last_frame.push_back(location)
 	for entry in queue:
 		if entry[0] == location:
 			return
-	queue.push_back([location, 0])
+	queue.push_back([location, 0, collect])
 		
-func drill_collide_internal(location: Vector2):
+func drill_collide_internal(location: Vector2, collect: bool):
 	var tm = self
 	var local = global_transform.inverse() * location;
 	var tile_pos = tm.local_to_map(local)
@@ -96,13 +96,13 @@ func drill_collide_internal(location: Vector2):
 	
 	tm.update_internals()
 	
-	if cell_type != -1:
+	if cell_type != -1 and collect:
 		$"../../DrillSound".play(0.0)
 		
 		match cell_type:
 			0, 1, 2:
 				$"../../Player2/Inventory".add_new_resource("ice", 1)
-			4:
+			3, 4:
 				$"../../Player2/Inventory".add_new_resource("amulite", 1)
 			5, 6, 7:
 				$"../../Player2/Inventory".add_new_resource("metal", 1)
@@ -121,7 +121,7 @@ func _process(delta):
 	while i < queue.size():
 		if queue[i][1] < 0:
 			# if queue[i][0] in last_frame:
-			self.drill_collide_internal(queue[i][0])
+			self.drill_collide_internal(queue[i][0], queue[i][2])
 			queue.remove_at(i)
 		else:
 			i += 1
