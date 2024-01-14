@@ -54,10 +54,12 @@ func delta_hp(amount):
 		get_tree().quit()
 	
 func calculate_collide():
-	var speed = self.get_parent().linear_velocity.length()
-	print("Collide at " + str(speed))
+	var speed = self.get_parent().last_tick_rate
+	print("Collide at " + str(speed) + " doing " + str(-((speed-200) * (speed-200)/10000)) + " HP")
 	if speed > 200:
-		delta_hp(-((speed-200) * (speed-200)/100))
+		delta_hp(-((speed-200) * (speed-200)/10000))
+	
+	self.get_parent().last_tick_rate = 0
 
 
 func _on_player_2_body_entered(body):

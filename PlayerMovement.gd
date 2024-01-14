@@ -7,6 +7,8 @@ extends RigidBody2D
 
 @export var allow_input = true
 
+@export var last_tick_rate = 0
+
 var rot_vel = 0
 var rcs_thrust = 250
 var torque = 500
@@ -83,4 +85,6 @@ func _physics_process(delta):
 	get_input(delta)
 	
 	self.mass = $Inventory.get_total_count() * 0.25 + 100
+	
+	last_tick_rate = self.linear_velocity.length()
 	#move_and_slide()
