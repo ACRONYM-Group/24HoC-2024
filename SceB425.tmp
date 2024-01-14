@@ -364,6 +364,11 @@ gravity_scale = 0.0
 max_contacts_reported = 10
 contact_monitor = true
 script = ExtResource("1_u6bc0")
+accel_rate = null
+rotation_rate = null
+max_rotation_rate = null
+allow_input = null
+last_tick_rate = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player2"]
 sprite_frames = SubResource("SpriteFrames_g1gax")
