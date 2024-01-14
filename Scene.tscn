@@ -270,6 +270,7 @@ texture = ExtResource("25_ldocf")
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7, 0, -3.5, -6, 3.5, -6, 7, 0, 3.5, 6, -3.5, 6)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_elip4"]
 texture = ExtResource("13_tln5h")
