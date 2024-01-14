@@ -80,12 +80,6 @@ func get_input(delta):
 		
 		self.apply_torque(delta_rotation * torque)
 		
-	if self.get_contact_count() > 1:
-		#self.set_collision_mask_value(1, false)
-		self.apply_impulse((Vector2(0, 1) * 4000).rotated(self.rotation))
-		#for x in self.get_colliding_bodies():
-			#x.collision_layer = 0
-		
 		
 
 func _physics_process(delta):
