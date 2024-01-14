@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://cou5ph7kcnn7x"]
+[gd_scene load_steps=72 format=3 uid="uid://cou5ph7kcnn7x"]
 
 [ext_resource type="Script" path="res://Scene.gd" id="1_23tfu"]
 [ext_resource type="Script" path="res://PlayerMovement.gd" id="1_u6bc0"]
@@ -34,6 +34,7 @@
 [ext_resource type="Texture2D" uid="uid://dsui3ktnmtdv0" path="res://Sprites/Tiles/Asteroid_Hextile_Carbon3.png" id="18_4eeql"]
 [ext_resource type="Texture2D" uid="uid://d35vs0nikbqyj" path="res://Sprites/Tiles/Asteroid_Hextile_Copper.png" id="19_da3kw"]
 [ext_resource type="Texture2D" uid="uid://be2p2rsocja3i" path="res://Sprites/Tiles/Asteroid_Hextile_Silicates0.png" id="21_spt3l"]
+[ext_resource type="Texture2D" uid="uid://ccvs6rbli51yk" path="res://Sprites/Tiles/Asteroid_Hextile_Amulite_Alt.png" id="25_ldocf"]
 [ext_resource type="PackedScene" uid="uid://b24if7odisltp" path="res://Minimap.tscn" id="32_5xsfn"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7gnyr"]
@@ -264,6 +265,12 @@ texture = ExtResource("10_iwi1i")
 0:0/0/physics_layer_0/angular_velocity = 0.0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7, 0, -3.5, -6, 3.5, -6, 7, 0, 3.5, 6, -3.5, 6)
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ac00o"]
+texture = ExtResource("25_ldocf")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_elip4"]
 texture = ExtResource("13_tln5h")
 0:0/0 = 0
@@ -329,6 +336,7 @@ sources/14 = SubResource("TileSetAtlasSource_8lnl8")
 sources/15 = SubResource("TileSetAtlasSource_hli6v")
 sources/16 = SubResource("TileSetAtlasSource_swhg8")
 sources/17 = SubResource("TileSetAtlasSource_qpnjc")
+sources/3 = SubResource("TileSetAtlasSource_ac00o")
 
 [node name="Scene" type="Node2D"]
 script = ExtResource("1_23tfu")
