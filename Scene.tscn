@@ -347,7 +347,6 @@ sources/17 = SubResource("TileSetAtlasSource_qpnjc")
 script = ExtResource("1_23tfu")
 
 [node name="background" type="Sprite2D" parent="."]
-visible = false
 position = Vector2(3, 269)
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("2_x8onv")

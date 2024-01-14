@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cfuyixon7ew87"]
+[gd_scene load_steps=8 format=3 uid="uid://cfuyixon7ew87"]
 
 [ext_resource type="Script" path="res://EscapeMenu.gd" id="1_wfhuj"]
+[ext_resource type="Script" path="res://StartOverFromEscape.gd" id="2_i1e1h"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wmtpw"]
 bg_color = Color(0, 0, 0, 1)
@@ -59,14 +60,16 @@ offset_bottom = 151.0
 theme = SubResource("Theme_p8s8b")
 text = "Back"
 
-[node name="Button2" type="Button" parent="Button2"]
+[node name="Button3" type="Button" parent="."]
 offset_left = 20.0
-offset_top = 125.0
+offset_top = 174.0
 offset_right = 744.0
-offset_bottom = 226.0
+offset_bottom = 275.0
 theme = SubResource("Theme_p8s8b")
-text = "Back"
+text = "Start Over"
+script = ExtResource("2_i1e1h")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
-[connection signal="pressed" from="Button2/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Button3" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Button3" to="Button3" method="_on_pressed"]
