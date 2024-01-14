@@ -1,10 +1,11 @@
-[gd_scene load_steps=34 format=3 uid="uid://clrqwmrb6mddi"]
+[gd_scene load_steps=36 format=3 uid="uid://clrqwmrb6mddi"]
 
 [ext_resource type="Texture2D" uid="uid://c4kcculj23hyb" path="res://PIA17172_Saturn_eclipse_mosaic_bright_crop.jpg" id="1_ti3k6"]
 [ext_resource type="Script" path="res://PlayerMovement.gd" id="1_u6bc0"]
 [ext_resource type="Texture2D" uid="uid://isfvtg2foor8" path="res://Sprites/Miner/miner_spritesheet.png" id="3_cpou3"]
 [ext_resource type="Texture2D" uid="uid://l0xsibf22447" path="res://Sprites/Miner/Thruster.png" id="4_s2c4n"]
 [ext_resource type="Script" path="res://Thruster.gd" id="5_ytjv8"]
+[ext_resource type="Script" path="res://MiningCollider.gd" id="7_hmudl"]
 [ext_resource type="AudioStream" uid="uid://dhbtg7dpc0tuu" path="res://Sounds/Steam Puff.mp3" id="7_vcox7"]
 [ext_resource type="Texture2D" uid="uid://u1alvyyh6y0c" path="res://Sprites/Tiles/Asteroid_Hextile_Ice0.png" id="8_dchvf"]
 [ext_resource type="Script" path="res://Asteroid.gd" id="9_nld0i"]
@@ -160,6 +161,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wbhm2"]
+size = Vector2(2, 3)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fro2s"]
 size = Vector2(41, 27)
 
@@ -193,7 +197,7 @@ sources/3 = SubResource("TileSetAtlasSource_3fe8b")
 script = ExtResource("1_ykl3a")
 
 [node name="Pia17172SaturnEclipseMosaicBrightCrop" type="Sprite2D" parent="."]
-position = Vector2(-8.99988, 1.00012)
+position = Vector2(-7, 2)
 scale = Vector2(10, 10)
 texture = ExtResource("1_ti3k6")
 
@@ -229,6 +233,13 @@ scale = Vector2(1, 1.139)
 sprite_frames = SubResource("SpriteFrames_4jrmk")
 animation = &"Thrust4"
 script = ExtResource("5_ytjv8")
+
+[node name="DrillArea" type="Area2D" parent="Player2/AnimatedSprite2D"]
+script = ExtResource("7_hmudl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player2/AnimatedSprite2D/DrillArea"]
+position = Vector2(0, -24)
+shape = SubResource("RectangleShape2D_wbhm2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player2"]
 position = Vector2(0.5, -5.5)
