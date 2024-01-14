@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://l0xsibf22447" path="res://Sprites/Miner/Thruster.png" id="4_s2c4n"]
 [ext_resource type="AudioStream" uid="uid://b0hdykp6eygph" path="res://Sounds/Hammer-Pulse.mp3" id="4_wnorf"]
 [ext_resource type="Script" path="res://Thruster.gd" id="5_ytjv8"]
+[ext_resource type="Script" path="res://CameraZoom.gd" id="7_g1up4"]
 [ext_resource type="Script" path="res://MiningCollider.gd" id="7_hmudl"]
 [ext_resource type="AudioStream" uid="uid://dhbtg7dpc0tuu" path="res://Sounds/Steam Puff.mp3" id="7_vcox7"]
 [ext_resource type="PackedScene" uid="uid://cfuyixon7ew87" path="res://EscapeMenu.tscn" id="8_5jshb"]
@@ -371,6 +372,7 @@ sprite_frames = SubResource("SpriteFrames_g1gax")
 ignore_rotation = false
 position_smoothing_speed = 50.0
 rotation_smoothing_enabled = true
+script = ExtResource("7_g1up4")
 
 [node name="LeftThruster" type="AnimatedSprite2D" parent="Player2/AnimatedSprite2D"]
 position = Vector2(-22.625, -5.0625)
