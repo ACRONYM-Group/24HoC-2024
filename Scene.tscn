@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://cou5ph7kcnn7x"]
+[gd_scene load_steps=73 format=3 uid="uid://cou5ph7kcnn7x"]
 
 [ext_resource type="Script" path="res://Scene.gd" id="1_23tfu"]
 [ext_resource type="Script" path="res://PlayerMovement.gd" id="1_u6bc0"]
@@ -36,6 +36,7 @@
 [ext_resource type="Texture2D" uid="uid://be2p2rsocja3i" path="res://Sprites/Tiles/Asteroid_Hextile_Silicates0.png" id="21_spt3l"]
 [ext_resource type="Texture2D" uid="uid://ccvs6rbli51yk" path="res://Sprites/Tiles/Asteroid_Hextile_Amulite_Alt.png" id="25_ldocf"]
 [ext_resource type="PackedScene" uid="uid://b24if7odisltp" path="res://Minimap.tscn" id="32_5xsfn"]
+[ext_resource type="AudioStream" uid="uid://cxpcu51f8ixfn" path="res://Sounds/Chronos.mp3" id="37_6vcnk"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7gnyr"]
 random_pitch = 1.2
@@ -455,5 +456,10 @@ offset_bottom = -54.0
 
 [node name="Minimap" parent="MiniMap" instance=ExtResource("32_5xsfn")]
 
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("37_6vcnk")
+autoplay = true
+
 [connection signal="body_entered" from="Player2" to="Player2/Inventory" method="_on_player_2_body_entered"]
 [connection signal="body_shape_entered" from="Player2" to="Player2/Inventory" method="_on_player_2_body_shape_entered"]
+[connection signal="finished" from="AudioStreamPlayer2" to="." method="_on_audio_stream_player_2_finished"]

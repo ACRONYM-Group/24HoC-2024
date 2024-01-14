@@ -21,3 +21,7 @@ func _process(delta):
 	
 	if abs($Player2.position.x - $Asteroids.last_generation_position.x) > $Asteroids.generated_area or abs($Player2.position.y - $Asteroids.last_generation_position.y) > $Asteroids.generated_area:
 		$Asteroids.generate_ring_tile($Player2.position)
+
+
+func _on_audio_stream_player_2_finished():
+	$AudioStreamPlayer2.play(0.0)
