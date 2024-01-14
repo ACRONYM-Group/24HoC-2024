@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bqrcng44ycdq3"
+path="res://.godot/imported/Womp Womp Womp sound effect (Jordan's Idea).mp3-bc6e468b31ae8ee9432aa272ed98ac37.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Womp Womp Womp sound effect (Jordan's Idea).mp3"
+dest_files=["res://.godot/imported/Womp Womp Womp sound effect (Jordan's Idea).mp3-bc6e468b31ae8ee9432aa272ed98ac37.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

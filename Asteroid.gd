@@ -11,7 +11,7 @@ func _ready():
 func generate_random():
 	var rng = RandomNumberGenerator.new()
 	var size = rng.randi_range(6, 12)
-	var types = [[3], [4], [5, 6, 7, 8]]
+	var types = [[4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16], [17]]
 	var index = rng.randi_range(0, types.size() - 1)
 	
 	generate_tile_map(types[index], size)
@@ -118,11 +118,29 @@ func drill_collide(location: Vector2):
 	var local = global_transform.inverse() * location;
 	var tile_pos = tm.local_to_map(local)
 	
+	var cell_type = tm.get_cell_source_id(0, tile_pos)
+	
 	# tm.clear()
 	tm.erase_cell(0, tile_pos)
 	
 	regenerate_mesh()
 	tm.update_internals()
+	
+	if cell_type != -1:
+		match cell_type:
+			0, 1, 2:
+				$"../../Player2/Inventory".add_new_resource("ice", 1)
+			4:
+				$"../../Player2/Inventory".add_new_resource("amulite", 1)
+			5, 6, 7:
+				$"../../Player2/Inventory".add_new_resource("metal", 1)
+			9, 10, 11, 12:
+				$"../../Player2/Inventory".add_new_resource("silicates", 1)
+			13, 14, 15, 16:
+				$"../../Player2/Inventory".add_new_resource("carbon", 1)
+			17:
+				$"../../Player2/Inventory".add_new_resource("exotics", 1)
+		
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
