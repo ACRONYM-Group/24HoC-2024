@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://cou5ph7kcnn7x"]
+[gd_scene load_steps=87 format=3 uid="uid://cou5ph7kcnn7x"]
 
 [ext_resource type="Script" path="res://Scene.gd" id="1_23tfu"]
 [ext_resource type="Script" path="res://PlayerMovement.gd" id="1_u6bc0"]
@@ -10,7 +10,7 @@
 [ext_resource type="Script" path="res://CameraZoom.gd" id="7_g1up4"]
 [ext_resource type="Script" path="res://MiningCollider.gd" id="7_hmudl"]
 [ext_resource type="AudioStream" uid="uid://dhbtg7dpc0tuu" path="res://Sounds/Steam Puff.mp3" id="7_vcox7"]
-[ext_resource type="PackedScene" uid="uid://cfuyixon7ew87" path="res://EscapeMenu.tscn" id="8_5jshb"]
+[ext_resource type="PackedScene" uid="uid://b23yjb1p55oan" path="res://EscapeMenu.tscn" id="8_5jshb"]
 [ext_resource type="Texture2D" uid="uid://u1alvyyh6y0c" path="res://Sprites/Tiles/Asteroid_Hextile_Ice0.png" id="8_dchvf"]
 [ext_resource type="Script" path="res://Inventory.gd" id="8_p4qje"]
 [ext_resource type="Script" path="res://Asteroid.gd" id="9_nld0i"]
@@ -36,13 +36,75 @@
 [ext_resource type="Texture2D" uid="uid://be2p2rsocja3i" path="res://Sprites/Tiles/Asteroid_Hextile_Silicates0.png" id="21_spt3l"]
 [ext_resource type="Texture2D" uid="uid://ccvs6rbli51yk" path="res://Sprites/Tiles/Asteroid_Hextile_Amulite_Alt.png" id="25_ldocf"]
 [ext_resource type="PackedScene" uid="uid://b24if7odisltp" path="res://Minimap.tscn" id="32_5xsfn"]
-[ext_resource type="AudioStream" uid="uid://cxpcu51f8ixfn" path="res://Sounds/Chronos.mp3" id="37_6vcnk"]
+[ext_resource type="PackedScene" uid="uid://dvm7pl87icljo" path="res://StationMenu.tscn" id="34_2e14s"]
+[ext_resource type="Texture2D" uid="uid://2cye3kuk7qqm" path="res://Sprites/Main Ship images/Stage 1/mainship_spritesheet.png" id="37_1acfi"]
+[ext_resource type="Script" path="res://BigShip.gd" id="38_ame2n"]
+[ext_resource type="Script" path="res://Blink.gd" id="39_1cbvn"]
+[ext_resource type="Script" path="res://Docking.gd" id="39_73cb4"]
+[ext_resource type="AudioStream" uid="uid://dd43uecwaumax" path="res://Sounds/Alert.mp3" id="41_k46ha"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7gnyr"]
 random_pitch = 1.2
 streams_count = 1
 stream_0/stream = ExtResource("7_vcox7")
 stream_0/weight = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bl18q"]
+atlas = ExtResource("37_1acfi")
+region = Rect2(0, 0, 570, 873)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cx12e"]
+atlas = ExtResource("37_1acfi")
+region = Rect2(570, 0, 570, 873)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mu27s"]
+atlas = ExtResource("37_1acfi")
+region = Rect2(1140, 0, 570, 873)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vr1yx"]
+atlas = ExtResource("37_1acfi")
+region = Rect2(1710, 0, 570, 873)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kr7x8"]
+atlas = ExtResource("37_1acfi")
+region = Rect2(2280, 0, 570, 873)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2dml4"]
+atlas = ExtResource("37_1acfi")
+region = Rect2(2850, 0, 570, 873)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ncjwn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bl18q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cx12e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mu27s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vr1yx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kr7x8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2dml4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e0lpw"]
+size = Vector2(0.167446, 20)
+
+[sub_resource type="LabelSettings" id="LabelSettings_i1thw"]
+font_size = 24
+font_color = Color(1, 0, 0, 1)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_74xrq"]
 rough = true
@@ -355,6 +417,34 @@ pitch_scale = 0.1
 [node name="DrillSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_wnorf")
 
+[node name="BigShip" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ncjwn")
+frame = 5
+frame_progress = 1.0
+script = ExtResource("38_ame2n")
+
+[node name="Area2D" type="Area2D" parent="BigShip"]
+script = ExtResource("39_73cb4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BigShip/Area2D"]
+position = Vector2(-2.50006, 479)
+rotation = -3.14159
+scale = Vector2(603.179, 4.87791)
+shape = SubResource("RectangleShape2D_e0lpw")
+
+[node name="Label" type="Label" parent="BigShip"]
+offset_left = -546.0
+offset_top = 366.0
+offset_right = 537.0
+offset_bottom = 465.0
+text = "DOCKING SEQUENCE ENGAGED"
+label_settings = SubResource("LabelSettings_i1thw")
+horizontal_alignment = 1
+script = ExtResource("39_1cbvn")
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="BigShip/Label"]
+stream = ExtResource("41_k46ha")
+
 [node name="Player2" type="RigidBody2D" parent="."]
 physics_material_override = SubResource("PhysicsMaterial_74xrq")
 gravity_scale = 0.0
@@ -456,10 +546,13 @@ offset_bottom = -54.0
 
 [node name="Minimap" parent="MiniMap" instance=ExtResource("32_5xsfn")]
 
-[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("37_6vcnk")
-autoplay = true
+[node name="StationMenu" type="CanvasLayer" parent="."]
+process_mode = 3
+visible = false
+
+[node name="Control" parent="StationMenu" instance=ExtResource("34_2e14s")]
+process_mode = 3
+test = true
 
 [connection signal="body_entered" from="Player2" to="Player2/Inventory" method="_on_player_2_body_entered"]
 [connection signal="body_shape_entered" from="Player2" to="Player2/Inventory" method="_on_player_2_body_shape_entered"]
-[connection signal="finished" from="AudioStreamPlayer2" to="." method="_on_audio_stream_player_2_finished"]
