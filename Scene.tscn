@@ -344,7 +344,7 @@ script = ExtResource("1_23tfu")
 
 [node name="background" type="Sprite2D" parent="."]
 position = Vector2(5, 269)
-scale = Vector2(2.5, 2.5)
+scale = Vector2(2.3588, 2.48292)
 texture = ExtResource("2_x8onv")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
@@ -424,6 +424,7 @@ script = ExtResource("8_p4qje")
 script = ExtResource("11_ceddo")
 
 [node name="TileMap" type="TileMap" parent="Asteroids"]
+visible = false
 position = Vector2(50, 200)
 rotation = 1.01578
 tile_set = SubResource("TileSet_r887t")
