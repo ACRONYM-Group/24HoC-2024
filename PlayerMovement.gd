@@ -79,13 +79,7 @@ func get_input(delta):
 			self.apply_central_force((input_direction * rcs_thrust).rotated(self.rotation))
 		
 		self.apply_torque(delta_rotation * torque)
-		
-	if self.get_contact_count() > 1:
-		print("Stuck!")
-		#self.set_collision_mask_value(1, false)
-		self.apply_impulse((Vector2(0, 1) * 4000).rotated(self.rotation))
-		#for x in self.get_colliding_bodies():
-			#x.collision_layer = 0
+
 		
 		
 
