@@ -405,6 +405,11 @@ position = Vector2(-9, -10)
 target_position = Vector2(0, -15)
 script = ExtResource("7_hmudl")
 
+[node name="RayCast2D5" type="RayCast2D" parent="Player2/AnimatedSprite2D"]
+position = Vector2(-15, -10)
+target_position = Vector2(0, -15)
+script = ExtResource("7_hmudl")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player2"]
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_fro2s")
@@ -445,6 +450,11 @@ offset_bottom = -54.0
 [node name="MiniMap" type="CanvasLayer" parent="."]
 
 [node name="Minimap" parent="MiniMap" instance=ExtResource("32_5xsfn")]
+
+[node name="RayCast2D3" type="RayCast2D" parent="."]
+position = Vector2(16, -10)
+target_position = Vector2(0, -15)
+script = ExtResource("7_hmudl")
 
 [connection signal="body_entered" from="Player2" to="Player2/Inventory" method="_on_player_2_body_entered"]
 [connection signal="body_shape_entered" from="Player2" to="Player2/Inventory" method="_on_player_2_body_shape_entered"]

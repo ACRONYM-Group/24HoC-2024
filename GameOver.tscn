@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bsxl4mk8hqhrt"]
+[gd_scene load_steps=5 format=3 uid="uid://bsxl4mk8hqhrt"]
+
+[ext_resource type="Script" path="res://StartOverButton.gd" id="1_hwmi6"]
 
 [sub_resource type="Theme" id="Theme_vtuf7"]
 RichTextLabel/font_sizes/normal_font_size = 48
@@ -36,3 +38,6 @@ offset_right = 450.0
 offset_bottom = 231.0
 theme = SubResource("Theme_bfl6e")
 text = "Start Over"
+script = ExtResource("1_hwmi6")
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
