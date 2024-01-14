@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://cou5ph7kcnn7x"]
+
+[ext_resource type="Texture2D" uid="uid://c4kcculj23hyb" path="res://PIA17172_Saturn_eclipse_mosaic_bright_crop.jpg" id="1_ti3k6"]
+[ext_resource type="Script" path="res://PlayerMovement.gd" id="1_u6bc0"]
+[ext_resource type="Texture2D" uid="uid://c8c5ogqiiewth" path="res://icon.svg" id="3_6omeh"]
+[ext_resource type="Texture2D" uid="uid://dwofx17riavpb" path="res://ship2.png" id="3_mbqk4"]
+[ext_resource type="Shape2D" uid="uid://0mx2xu8qdw5s" path="res://ShipCollisionMesh.tres" id="5_thcux"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wkwkd"]
+size = Vector2(14, 15)
+
+[node name="Scene" type="Node2D"]
+
+[node name="Pia17172SaturnEclipseMosaicBrightCrop" type="Sprite2D" parent="."]
+position = Vector2(-11, -24)
+scale = Vector2(10, 10)
+texture = ExtResource("1_ti3k6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-308, -164)
+texture = ExtResource("3_6omeh")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="Sprite2D"]
+disable_mode = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/RigidBody2D"]
+position = Vector2(-0.5, -0.5)
+shape = ExtResource("5_thcux")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+script = ExtResource("1_u6bc0")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+scale = Vector2(0.330078, 0.324219)
+texture = ExtResource("3_mbqk4")
+
+[node name="Camera2D" type="Camera2D" parent="RigidBody2D/Sprite2D"]
+scale = Vector2(3.02959, 3.08434)
+ignore_rotation = false
+zoom = Vector2(2, 2)
+position_smoothing_speed = 50.0
+rotation_smoothing_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(0, 0.5)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_wkwkd")

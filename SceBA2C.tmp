@@ -1,27 +1,12 @@
-[gd_scene load_steps=36 format=3 uid="uid://clrqwmrb6mddi"]
+[gd_scene load_steps=23 format=3 uid="uid://cou5ph7kcnn7x"]
 
 [ext_resource type="Texture2D" uid="uid://c4kcculj23hyb" path="res://PIA17172_Saturn_eclipse_mosaic_bright_crop.jpg" id="1_ti3k6"]
 [ext_resource type="Script" path="res://PlayerMovement.gd" id="1_u6bc0"]
-[ext_resource type="Texture2D" uid="uid://isfvtg2foor8" path="res://Sprites/Miner/miner_spritesheet.png" id="3_cpou3"]
-[ext_resource type="Texture2D" uid="uid://l0xsibf22447" path="res://Sprites/Miner/Thruster.png" id="4_s2c4n"]
+[ext_resource type="Texture2D" uid="uid://c8c5ogqiiewth" path="res://icon.svg" id="3_6omeh"]
+[ext_resource type="Texture2D" uid="uid://be5aea25d150q" path="res://miner_spritesheet.png" id="3_cpou3"]
+[ext_resource type="Texture2D" uid="uid://n57clg7rclx1" path="res://Thruster.png" id="4_s2c4n"]
 [ext_resource type="Script" path="res://Thruster.gd" id="5_ytjv8"]
-[ext_resource type="Script" path="res://MiningCollider.gd" id="7_hmudl"]
 [ext_resource type="AudioStream" uid="uid://dhbtg7dpc0tuu" path="res://Sounds/Steam Puff.mp3" id="7_vcox7"]
-[ext_resource type="Texture2D" uid="uid://u1alvyyh6y0c" path="res://Sprites/Tiles/Asteroid_Hextile_Ice0.png" id="8_dchvf"]
-[ext_resource type="Script" path="res://Asteroid.gd" id="9_nld0i"]
-[ext_resource type="Texture2D" uid="uid://dtb1yc80ibuug" path="res://Sprites/Tiles/Asteroid_Hextile_Ice1.png" id="9_uey1h"]
-[ext_resource type="Texture2D" uid="uid://bbvevvyjsg6m1" path="res://Sprites/Tiles/Asteroid_Hextile_Ice2.png" id="10_iwi1i"]
-[ext_resource type="Script" path="res://Asteroids.gd" id="11_ceddo"]
-[ext_resource type="Texture2D" uid="uid://bfhffiov2jkpn" path="res://Sprites/Tiles/Asteroid_Hextile_Iron.png" id="11_ul5va"]
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7gnyr"]
-random_pitch = 1.2
-streams_count = 1
-stream_0/stream = ExtResource("7_vcox7")
-stream_0/weight = 1.0
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_74xrq"]
-bounce = 0.2
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3k5ot"]
 atlas = ExtResource("3_cpou3")
@@ -161,64 +146,34 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wbhm2"]
-size = Vector2(2, 3)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wkwkd"]
+size = Vector2(50, 50)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fro2s"]
-size = Vector2(41, 27)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a0hqo"]
-texture = ExtResource("8_dchvf")
-0:0/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_blas7"]
-texture = ExtResource("9_uey1h")
-0:0/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qghup"]
-texture = ExtResource("10_iwi1i")
-0:0/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3fe8b"]
-texture = ExtResource("11_ul5va")
-0:0/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_r887t"]
-tile_shape = 3
-tile_layout = 4
-tile_offset_axis = 1
-tile_size = Vector2i(14, 12)
-sources/0 = SubResource("TileSetAtlasSource_a0hqo")
-sources/1 = SubResource("TileSetAtlasSource_blas7")
-sources/2 = SubResource("TileSetAtlasSource_qghup")
-sources/3 = SubResource("TileSetAtlasSource_3fe8b")
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7gnyr"]
+random_pitch = 1.2
+streams_count = 1
+stream_0/stream = ExtResource("7_vcox7")
+stream_0/weight = 1.0
 
 [node name="Scene" type="Node2D"]
-script = ExtResource("1_ykl3a")
 
 [node name="Pia17172SaturnEclipseMosaicBrightCrop" type="Sprite2D" parent="."]
-position = Vector2(-7, 2)
+position = Vector2(-11, -24)
 scale = Vector2(10, 10)
 texture = ExtResource("1_ti3k6")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = SubResource("AudioStreamRandomizer_7gnyr")
-pitch_scale = 0.1
-
-[node name="Player2" type="RigidBody2D" parent="."]
-physics_material_override = SubResource("PhysicsMaterial_74xrq")
-gravity_scale = 0.0
+[node name="Player" type="CharacterBody2D" parent="."]
 script = ExtResource("1_u6bc0")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player2"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
 sprite_frames = SubResource("SpriteFrames_g1gax")
 
-[node name="Camera2D" type="Camera2D" parent="Player2/AnimatedSprite2D"]
+[node name="Camera2D" type="Camera2D" parent="Player/AnimatedSprite2D"]
 ignore_rotation = false
 position_smoothing_speed = 50.0
 rotation_smoothing_enabled = true
 
-[node name="LeftThruster" type="AnimatedSprite2D" parent="Player2/AnimatedSprite2D"]
+[node name="LeftThruster" type="AnimatedSprite2D" parent="Player/AnimatedSprite2D"]
 position = Vector2(-22.625, -5.0625)
 rotation = -1.5708
 scale = Vector2(1, 1.019)
@@ -226,7 +181,7 @@ sprite_frames = SubResource("SpriteFrames_4jrmk")
 animation = &"Thrust0"
 script = ExtResource("5_ytjv8")
 
-[node name="RightThruster" type="AnimatedSprite2D" parent="Player2/AnimatedSprite2D"]
+[node name="RightThruster" type="AnimatedSprite2D" parent="Player/AnimatedSprite2D"]
 position = Vector2(23.5, -5.0625)
 rotation = 1.5708
 scale = Vector2(1, 1.139)
@@ -234,32 +189,14 @@ sprite_frames = SubResource("SpriteFrames_4jrmk")
 animation = &"Thrust4"
 script = ExtResource("5_ytjv8")
 
-[node name="DrillArea" type="Area2D" parent="Player2/AnimatedSprite2D"]
-script = ExtResource("7_hmudl")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+visible = false
+shape = SubResource("RectangleShape2D_wkwkd")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player2/AnimatedSprite2D/DrillArea"]
-position = Vector2(0, -24)
-shape = SubResource("RectangleShape2D_wbhm2")
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-308, -164)
+texture = ExtResource("3_6omeh")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player2"]
-position = Vector2(0.5, -5.5)
-shape = SubResource("RectangleShape2D_fro2s")
-
-[node name="Asteroid" type="RigidBody2D" parent="."]
-position = Vector2(50, 200)
-rotation = 1.01578
-mass = 1000.0
-script = ExtResource("9_nld0i")
-
-[node name="TileMap" type="TileMap" parent="Asteroid"]
-tile_set = SubResource("TileSet_r887t")
-format = 2
-layer_0/tile_data = PackedInt32Array(-1, 0, 0, -65536, 0, 0, 65535, 0, 0, 0, 0, 0, 65536, 0, 0, 131071, 3, 0)
-
-[node name="Collider" type="CollisionPolygon2D" parent="Asteroid"]
-top_level = true
-build_mode = 1
-polygon = PackedVector2Array(-37.7193, 34.5458, 0, 0, 0, 0)
-
-[node name="Asteroids" type="Node" parent="."]
-script = ExtResource("11_ceddo")
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_7gnyr")
+pitch_scale = 0.1
