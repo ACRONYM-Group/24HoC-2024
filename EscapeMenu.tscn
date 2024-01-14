@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b23yjb1p55oan"]
+[gd_scene load_steps=8 format=3 uid="uid://cfuyixon7ew87"]
 
 [ext_resource type="Script" path="res://EscapeMenu.gd" id="1_wfhuj"]
 [ext_resource type="Script" path="res://StartOverFromEscape.gd" id="2_i1e1h"]
@@ -18,7 +18,7 @@ Button/font_sizes/font_size = 48
 Button/styles/hover = SubResource("StyleBoxFlat_wmtpw")
 Button/styles/normal = SubResource("StyleBoxFlat_o1of1")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t3cod"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c5ivq"]
 bg_color = Color(0, 0.6, 0, 1)
 corner_radius_top_left = 30
 corner_radius_top_right = 30
@@ -27,7 +27,7 @@ corner_radius_bottom_left = 30
 
 [sub_resource type="Theme" id="Theme_p8s8b"]
 Button/font_sizes/font_size = 48
-Button/styles/normal = SubResource("StyleBoxFlat_t3cod")
+Button/styles/normal = SubResource("StyleBoxFlat_c5ivq")
 
 [node name="EscapeMenu" type="Control"]
 layout_mode = 3
