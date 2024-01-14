@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://clrqwmrb6mddi"]
+[gd_scene load_steps=45 format=3 uid="uid://clrqwmrb6mddi"]
 
 [ext_resource type="Texture2D" uid="uid://c4kcculj23hyb" path="res://PIA17172_Saturn_eclipse_mosaic_bright_crop.jpg" id="1_ti3k6"]
 [ext_resource type="Script" path="res://PlayerMovement.gd" id="1_u6bc0"]
@@ -13,6 +13,11 @@
 [ext_resource type="Texture2D" uid="uid://bbvevvyjsg6m1" path="res://Sprites/Tiles/Asteroid_Hextile_Ice2.png" id="10_iwi1i"]
 [ext_resource type="Script" path="res://Asteroids.gd" id="11_ceddo"]
 [ext_resource type="Texture2D" uid="uid://bfhffiov2jkpn" path="res://Sprites/Tiles/Asteroid_Hextile_Iron.png" id="11_ul5va"]
+[ext_resource type="Texture2D" uid="uid://cx38fmbaciwsc" path="res://Sprites/Tiles/Asteroid_Hextile_Amulite.png" id="13_tln5h"]
+[ext_resource type="Texture2D" uid="uid://du55igupmw15a" path="res://Sprites/Tiles/Asteroid_Hextile_Metals0.png" id="14_5763v"]
+[ext_resource type="Texture2D" uid="uid://co0u4y3k364hj" path="res://Sprites/Tiles/Asteroid_Hextile_Metals1.png" id="15_s71wk"]
+[ext_resource type="Texture2D" uid="uid://bkek8rm71n4x1" path="res://Sprites/Tiles/Asteroid_Hextile_Metals2.png" id="16_n1gnu"]
+[ext_resource type="Texture2D" uid="uid://cwo7xtochsghj" path="res://Sprites/Tiles/Asteroid_Hextile_Metals3.png" id="17_h21yj"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7gnyr"]
 random_pitch = 1.2
@@ -21,7 +26,8 @@ stream_0/stream = ExtResource("7_vcox7")
 stream_0/weight = 1.0
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_74xrq"]
-bounce = 0.2
+rough = true
+absorbent = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3k5ot"]
 atlas = ExtResource("3_cpou3")
@@ -161,42 +167,97 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wbhm2"]
-size = Vector2(2, 3)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fro2s"]
-size = Vector2(41, 27)
+size = Vector2(41, 18)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a0hqo"]
 texture = ExtResource("8_dchvf")
 0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7, 0, -3.5, -6, 3.5, -6, 7, 0, 3.5, 6, -3.5, 6)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_blas7"]
 texture = ExtResource("9_uey1h")
 0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7, 0, -3.5, -6, 3.5, -6, 7, 0, 3.5, 6, -3.5, 6)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qghup"]
 texture = ExtResource("10_iwi1i")
 0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7, 0, -3.5, -6, 3.5, -6, 7, 0, 3.5, 6, -3.5, 6)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3fe8b"]
 texture = ExtResource("11_ul5va")
 0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7, 0, -3.5, -6, 3.5, -6, 7, 0, 3.5, 6, -3.5, 6)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_elip4"]
+texture = ExtResource("13_tln5h")
+texture_region_size = Vector2i(14, 12)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7, 0, -3.5, -6, 3.5, -6, 7, 0, 3.5, 6, -3.5, 6)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gka06"]
+texture = ExtResource("14_5763v")
+texture_region_size = Vector2i(14, 12)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7, 0, -3.5, -6, 3.5, -6, 7, 0, 3.5, 6, -3.5, 6)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aru0p"]
+texture = ExtResource("15_s71wk")
+texture_region_size = Vector2i(14, 12)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7, 0, -3.5, -6, 3.5, -6, 7, 0, 3.5, 6, -3.5, 6)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pygo0"]
+texture = ExtResource("16_n1gnu")
+texture_region_size = Vector2i(14, 12)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7, 0, -3.5, -6, 3.5, -6, 7, 0, 3.5, 6, -3.5, 6)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uvh7t"]
+texture = ExtResource("17_h21yj")
+texture_region_size = Vector2i(14, 12)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7, 0, -3.5, -6, 3.5, -6, 7, 0, 3.5, 6, -3.5, 6)
 
 [sub_resource type="TileSet" id="TileSet_r887t"]
 tile_shape = 3
 tile_layout = 4
 tile_offset_axis = 1
 tile_size = Vector2i(14, 12)
+physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_a0hqo")
 sources/1 = SubResource("TileSetAtlasSource_blas7")
 sources/2 = SubResource("TileSetAtlasSource_qghup")
 sources/3 = SubResource("TileSetAtlasSource_3fe8b")
+sources/4 = SubResource("TileSetAtlasSource_elip4")
+sources/5 = SubResource("TileSetAtlasSource_gka06")
+sources/6 = SubResource("TileSetAtlasSource_aru0p")
+sources/7 = SubResource("TileSetAtlasSource_pygo0")
+sources/8 = SubResource("TileSetAtlasSource_uvh7t")
 
 [node name="Scene" type="Node2D"]
 
 [node name="Pia17172SaturnEclipseMosaicBrightCrop" type="Sprite2D" parent="."]
-position = Vector2(-7, 2)
+position = Vector2(-20, 2)
 scale = Vector2(10, 10)
 texture = ExtResource("1_ti3k6")
 
@@ -233,32 +294,32 @@ sprite_frames = SubResource("SpriteFrames_4jrmk")
 animation = &"Thrust4"
 script = ExtResource("5_ytjv8")
 
-[node name="DrillArea" type="Area2D" parent="Player2/AnimatedSprite2D"]
+[node name="RayCast2D3" type="RayCast2D" parent="Player2/AnimatedSprite2D"]
+position = Vector2(0, -10)
+target_position = Vector2(0, -15)
 script = ExtResource("7_hmudl")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player2/AnimatedSprite2D/DrillArea"]
-position = Vector2(0, -24)
-shape = SubResource("RectangleShape2D_wbhm2")
+[node name="RayCast2D" type="RayCast2D" parent="Player2/AnimatedSprite2D"]
+position = Vector2(9, -10)
+target_position = Vector2(0, -15)
+script = ExtResource("7_hmudl")
+
+[node name="RayCast2D2" type="RayCast2D" parent="Player2/AnimatedSprite2D"]
+position = Vector2(-9, -10)
+target_position = Vector2(0, -15)
+script = ExtResource("7_hmudl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player2"]
-position = Vector2(0.5, -5.5)
+position = Vector2(0.5, -1)
 shape = SubResource("RectangleShape2D_fro2s")
-
-[node name="Asteroid" type="RigidBody2D" parent="."]
-position = Vector2(50, 200)
-rotation = 1.01578
-mass = 1000.0
-script = ExtResource("9_nld0i")
-
-[node name="TileMap" type="TileMap" parent="Asteroid"]
-tile_set = SubResource("TileSet_r887t")
-format = 2
-layer_0/tile_data = PackedInt32Array(-1, 0, 0, -65536, 0, 0, 65535, 0, 0, 0, 0, 0, 65536, 0, 0, 131071, 3, 0)
-
-[node name="Collider" type="CollisionPolygon2D" parent="Asteroid"]
-top_level = true
-build_mode = 1
-polygon = PackedVector2Array(-37.7193, 34.5458, 0, 0, 0, 0)
 
 [node name="Asteroids" type="Node" parent="."]
 script = ExtResource("11_ceddo")
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2(50, 200)
+rotation = 1.01578
+tile_set = SubResource("TileSet_r887t")
+format = 2
+layer_0/tile_data = PackedInt32Array(-1, 0, 0, -65536, 0, 0, 65535, 0, 0, 0, 0, 0, 65536, 0, 0, 131071, 3, 0)
+script = ExtResource("9_nld0i")
