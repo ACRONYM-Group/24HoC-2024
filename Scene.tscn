@@ -184,7 +184,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fro2s"]
-size = Vector2(41, 18)
+size = Vector2(30, 18)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a0hqo"]
 texture = ExtResource("8_dchvf")
@@ -406,7 +406,7 @@ target_position = Vector2(0, -15)
 script = ExtResource("7_hmudl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player2"]
-position = Vector2(0.5, -1)
+position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_fro2s")
 
 [node name="Inventory" type="Node" parent="Player2"]

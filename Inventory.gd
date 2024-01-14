@@ -51,7 +51,7 @@ func delta_hp(amount):
 	self.hp += amount
 	
 	if self.hp < 0:
-		get_tree().quit()
+		get_tree().change_scene("res://GameOver.tscn")
 	
 func calculate_collide():
 	var speed = self.get_parent().last_tick_rate
