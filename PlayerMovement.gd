@@ -10,16 +10,11 @@ var rcs_thrust = 250
 var torque = 100
 var main_thrust = 1000
 
-func _integrate_forces(state):
-	var input_direction = Input.get_vector("left", "right", "up", "down")
-	var delta_rotation = Input.get_vector("rotate_left", "rotate_right", "", "").x
-
-	
 	
 
 func get_input(delta):
 	var input_direction = Input.get_vector("left", "right", "up", "down")
-	var delta_rotation = Input.get_vector("rotate_left", "rotate_right", "", "").x
+	var delta_rotation = Input.get_axis("rotate_left", "rotate_right")
 
 	rot_vel *= 1.0 - (3 * delta)
 	

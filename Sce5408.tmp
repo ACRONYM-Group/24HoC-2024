@@ -1,7 +1,8 @@
-[gd_scene load_steps=30 format=3 uid="uid://clrqwmrb6mddi"]
+[gd_scene load_steps=31 format=3 uid="uid://clrqwmrb6mddi"]
 
 [ext_resource type="Texture2D" uid="uid://c4kcculj23hyb" path="res://PIA17172_Saturn_eclipse_mosaic_bright_crop.jpg" id="1_ti3k6"]
 [ext_resource type="Script" path="res://PlayerMovement.gd" id="1_u6bc0"]
+[ext_resource type="Texture2D" uid="uid://c8c5ogqiiewth" path="res://icon.svg" id="3_6omeh"]
 [ext_resource type="Texture2D" uid="uid://be5aea25d150q" path="res://miner_spritesheet.png" id="3_cpou3"]
 [ext_resource type="Texture2D" uid="uid://n57clg7rclx1" path="res://Thruster.png" id="4_s2c4n"]
 [ext_resource type="Script" path="res://Thruster.gd" id="5_ytjv8"]
@@ -9,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://br8mm00nlc8x7" path="res://Asteroid_Hextile_Ice.png" id="8_ef0x2"]
 [ext_resource type="Texture2D" uid="uid://kq7ymhvyexdn" path="res://Asteroid_Hextile_Iron.png" id="9_e7cy7"]
 [ext_resource type="Script" path="res://Asteroid.gd" id="9_nld0i"]
-[ext_resource type="Script" path="res://Asteroids.gd" id="11_ceddo"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7gnyr"]
 random_pitch = 1.2
@@ -177,6 +177,9 @@ tile_size = Vector2i(14, 12)
 sources/0 = SubResource("TileSetAtlasSource_vs0n0")
 sources/1 = SubResource("TileSetAtlasSource_cjyaa")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qilil"]
+size = Vector2(126, 126)
+
 [node name="Scene" type="Node2D"]
 
 [node name="Pia17172SaturnEclipseMosaicBrightCrop" type="Sprite2D" parent="."]
@@ -232,11 +235,18 @@ tile_set = SubResource("TileSet_yp6bf")
 format = 2
 
 [node name="Collider" type="CollisionPolygon2D" parent="Asteroid"]
-top_level = true
 position = Vector2(7.62939e-06, 2.51493)
 scale = Vector2(1, 0.91914)
 build_mode = 1
-polygon = PackedVector2Array(-37.7193, 34.5458)
+polygon = PackedVector2Array(-52.4904, 23.3015, -48.8018, 16.8289, -48.8018, 16.8289, -57.2156, 4.75249, -56.8414, -10.3566, -44.2457, -15.9414, -46.3022, -28.8499, -45.2483, -30.6992, -34.8794, -36.5059, -25.2077, -28.7015, -14.6347, -36.9308, -4.43602, -30.0511, 7.13954, -23.5227, 18.1882, -16.0696, 18.0179, -3.38307, 7.97197, 3.92163, 7.80177, 16.6081, -3.0941, 23.3395, -37.7193, 34.5458)
 
-[node name="Asteroids" type="Node" parent="."]
-script = ExtResource("11_ceddo")
+[node name="Object" type="RigidBody2D" parent="."]
+gravity_scale = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Object"]
+position = Vector2(-308, -164)
+texture = ExtResource("3_6omeh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object"]
+position = Vector2(-308, -164)
+shape = SubResource("RectangleShape2D_qilil")

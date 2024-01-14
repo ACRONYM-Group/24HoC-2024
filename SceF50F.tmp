@@ -1,7 +1,8 @@
-[gd_scene load_steps=30 format=3 uid="uid://clrqwmrb6mddi"]
+[gd_scene load_steps=32 format=3 uid="uid://clrqwmrb6mddi"]
 
 [ext_resource type="Texture2D" uid="uid://c4kcculj23hyb" path="res://PIA17172_Saturn_eclipse_mosaic_bright_crop.jpg" id="1_ti3k6"]
 [ext_resource type="Script" path="res://PlayerMovement.gd" id="1_u6bc0"]
+[ext_resource type="Texture2D" uid="uid://c8c5ogqiiewth" path="res://icon.svg" id="3_6omeh"]
 [ext_resource type="Texture2D" uid="uid://be5aea25d150q" path="res://miner_spritesheet.png" id="3_cpou3"]
 [ext_resource type="Texture2D" uid="uid://n57clg7rclx1" path="res://Thruster.png" id="4_s2c4n"]
 [ext_resource type="Script" path="res://Thruster.gd" id="5_ytjv8"]
@@ -177,6 +178,9 @@ tile_size = Vector2i(14, 12)
 sources/0 = SubResource("TileSetAtlasSource_vs0n0")
 sources/1 = SubResource("TileSetAtlasSource_cjyaa")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qilil"]
+size = Vector2(126, 126)
+
 [node name="Scene" type="Node2D"]
 
 [node name="Pia17172SaturnEclipseMosaicBrightCrop" type="Sprite2D" parent="."]
@@ -198,6 +202,7 @@ sprite_frames = SubResource("SpriteFrames_g1gax")
 
 [node name="Camera2D" type="Camera2D" parent="Player2/AnimatedSprite2D"]
 ignore_rotation = false
+zoom = Vector2(3, 3)
 position_smoothing_speed = 50.0
 rotation_smoothing_enabled = true
 
@@ -237,6 +242,17 @@ position = Vector2(7.62939e-06, 2.51493)
 scale = Vector2(1, 0.91914)
 build_mode = 1
 polygon = PackedVector2Array(-37.7193, 34.5458)
+
+[node name="Object" type="RigidBody2D" parent="."]
+gravity_scale = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Object"]
+position = Vector2(-308, -164)
+texture = ExtResource("3_6omeh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object"]
+position = Vector2(-308, -164)
+shape = SubResource("RectangleShape2D_qilil")
 
 [node name="Asteroids" type="Node" parent="."]
 script = ExtResource("11_ceddo")
