@@ -6,7 +6,7 @@ extends Node
 @export var carbon_quantity = 0
 @export var exotics_quantity = 0
 @export var silicates_quantity = 0
-@export var hp = 50
+@export var hp = 100
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -46,3 +46,21 @@ func add_new_resource(material_name, amount):
 		
 func delta_hp(amount):
 	self.hp += amount
+	
+	if self.hp < 0:
+		get_tree().quit()
+	
+func calculate_collide():
+	var speed = self.get_parent().linear_velocity.length()
+	print("Collide at " + str(speed))
+	if speed > 200:
+		delta_hp(-((speed-200) * (speed-200)/100))
+
+
+func _on_player_2_body_entered(body):
+	calculate_collide()
+
+
+func _on_player_2_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
+	calculate_collide()
+	pass # Replace with function body.

@@ -127,6 +127,8 @@ func drill_collide(location: Vector2):
 	tm.update_internals()
 	
 	if cell_type != -1:
+		$"../../DrillSound".play(0.0)
+		
 		match cell_type:
 			0, 1, 2:
 				$"../../Player2/Inventory".add_new_resource("ice", 1)
