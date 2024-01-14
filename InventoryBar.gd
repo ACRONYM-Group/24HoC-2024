@@ -10,7 +10,6 @@ func _ready():
 func _process(delta):
 	pass
 	
-	
 func set_ice_qty(amount):
 	$IceBox/IceQty.text = str(amount)
 

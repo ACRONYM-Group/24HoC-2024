@@ -8,6 +8,17 @@ extends Node
 @export var silicates_quantity = 0
 @export var hp = 100
 
+func to_dict():
+	var d = {}
+	d["ice"] = ice_quantity
+	d["metal"] = metal_quantity
+	d["amulite"] = amulite_quantity
+	d["carbon"] = carbon_quantity
+	d["exotics"] = exotics_quantity
+	d["silicates"] = silicates_quantity
+	
+	return d
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -46,6 +57,14 @@ func add_new_resource(material_name, amount):
 		exotics_quantity += amount
 	elif material_name == "silicates":
 		silicates_quantity += amount
+		
+func clear():
+	ice_quantity = 0
+	metal_quantity = 0
+	amulite_quantity = 0
+	carbon_quantity = 0
+	exotics_quantity = 0
+	silicates_quantity = 0
 		
 func delta_hp(amount):
 	self.hp += amount

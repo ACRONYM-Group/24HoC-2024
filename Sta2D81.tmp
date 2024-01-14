@@ -1,0 +1,67 @@
+[gd_scene load_steps=6 format=3 uid="uid://dvm7pl87icljo"]
+
+[ext_resource type="Texture2D" uid="uid://b4fmyk1imo7qn" path="res://Sprites/Miner/miner_hangar.png" id="1_d724g"]
+[ext_resource type="Script" path="res://StationMenu.gd" id="1_lukxn"]
+[ext_resource type="Script" path="res://Label.gd" id="2_68cfd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c5ivq"]
+bg_color = Color(0, 0.6, 0, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="Theme" id="Theme_e2nus"]
+Button/font_sizes/font_size = 48
+Button/styles/normal = SubResource("StyleBoxFlat_c5ivq")
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+script = ExtResource("1_lukxn")
+test = null
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_d724g")
+
+[node name="Label" type="Label" parent="Panel/TextureRect"]
+layout_mode = 0
+offset_left = 458.0
+offset_top = 59.0
+offset_right = 503.0
+offset_bottom = 82.0
+text = "Hello!"
+script = ExtResource("2_68cfd")
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 17.0
+offset_top = -126.0
+offset_right = 741.0
+offset_bottom = -25.0
+grow_vertical = 0
+theme = SubResource("Theme_e2nus")
+text = "Back"
