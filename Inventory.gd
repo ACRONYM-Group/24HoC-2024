@@ -55,7 +55,6 @@ func delta_hp(amount):
 	
 func calculate_collide():
 	var speed = self.get_parent().last_tick_rate
-	print("Collide at " + str(speed) + " doing " + str(-((speed-200) * (speed-200)/10000)) + " HP")
 	if speed > 200:
 		delta_hp(-((speed-200) * (speed-200)/10000))
 	

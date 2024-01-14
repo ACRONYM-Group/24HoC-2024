@@ -82,7 +82,7 @@ func drill_collide(location: Vector2):
 	for entry in queue:
 		if entry[0] == location:
 			return
-	queue.push_back([location, 0.15])
+	queue.push_back([location, 0])
 		
 func drill_collide_internal(location: Vector2):
 	var tm = self

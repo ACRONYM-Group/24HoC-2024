@@ -19,6 +19,7 @@ func set_allow_input(state):
 	#print(allow_input)
 
 func get_input(delta):
+	self.set_collision_mask_value(1, true)
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	var delta_rotation = Input.get_axis("rotate_left", "rotate_right")
 
@@ -78,6 +79,7 @@ func get_input(delta):
 			self.apply_central_force((input_direction * rcs_thrust).rotated(self.rotation))
 		
 		self.apply_torque(delta_rotation * torque)
+
 		
 		
 
