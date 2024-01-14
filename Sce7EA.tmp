@@ -1,0 +1,232 @@
+[gd_scene load_steps=27 format=3 uid="uid://cou5ph7kcnn7x"]
+
+[ext_resource type="Texture2D" uid="uid://c4kcculj23hyb" path="res://PIA17172_Saturn_eclipse_mosaic_bright_crop.jpg" id="1_ti3k6"]
+[ext_resource type="Script" path="res://PlayerMovement.gd" id="1_u6bc0"]
+[ext_resource type="Script" path="res://Scene.gd" id="1_ykl3a"]
+[ext_resource type="Texture2D" uid="uid://c8c5ogqiiewth" path="res://icon.svg" id="3_6omeh"]
+[ext_resource type="Texture2D" uid="uid://be5aea25d150q" path="res://miner_spritesheet.png" id="3_cpou3"]
+[ext_resource type="Texture2D" uid="uid://n57clg7rclx1" path="res://Thruster.png" id="4_s2c4n"]
+[ext_resource type="Script" path="res://Thruster.gd" id="5_ytjv8"]
+[ext_resource type="AudioStream" uid="uid://dhbtg7dpc0tuu" path="res://Sounds/Steam Puff.mp3" id="7_vcox7"]
+[ext_resource type="PackedScene" uid="uid://cfuyixon7ew87" path="res://EscapeMenu.tscn" id="8_5jshb"]
+[ext_resource type="Script" path="res://MenuCanvas.gd" id="9_5y217"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7gnyr"]
+random_pitch = 1.2
+streams_count = 1
+stream_0/stream = ExtResource("7_vcox7")
+stream_0/weight = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3k5ot"]
+atlas = ExtResource("3_cpou3")
+region = Rect2(0, 0, 32, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_stc71"]
+atlas = ExtResource("3_cpou3")
+region = Rect2(64, 0, 32, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ev0c"]
+atlas = ExtResource("3_cpou3")
+region = Rect2(96, 0, 32, 44)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g1gax"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3k5ot")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"start_thrusting",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_stc71")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ev0c")
+}],
+"loop": true,
+"name": &"thrusting",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ckm4x"]
+atlas = ExtResource("4_s2c4n")
+region = Rect2(0, 0, 31, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p32xr"]
+atlas = ExtResource("4_s2c4n")
+region = Rect2(31, 0, 31, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cb6vv"]
+atlas = ExtResource("4_s2c4n")
+region = Rect2(0, 15, 31, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rr5da"]
+atlas = ExtResource("4_s2c4n")
+region = Rect2(31, 15, 31, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ruju8"]
+atlas = ExtResource("4_s2c4n")
+region = Rect2(0, 30, 31, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wyk5l"]
+atlas = ExtResource("4_s2c4n")
+region = Rect2(31, 30, 31, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t6enj"]
+atlas = ExtResource("4_s2c4n")
+region = Rect2(0, 45, 31, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ir82"]
+atlas = ExtResource("4_s2c4n")
+region = Rect2(31, 45, 31, 15)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4jrmk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ckm4x")
+}],
+"loop": true,
+"name": &"Thrust0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p32xr")
+}],
+"loop": true,
+"name": &"Thrust1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cb6vv")
+}],
+"loop": true,
+"name": &"Thrust2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rr5da")
+}],
+"loop": true,
+"name": &"Thrust3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ruju8")
+}],
+"loop": true,
+"name": &"Thrust4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wyk5l")
+}],
+"loop": true,
+"name": &"Thrust5",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t6enj")
+}],
+"loop": true,
+"name": &"Thrust6",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ir82")
+}],
+"loop": true,
+"name": &"Thrust7",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fro2s"]
+size = Vector2(41, 27)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qilil"]
+size = Vector2(126, 126)
+
+[node name="Scene" type="Node2D"]
+script = ExtResource("1_ykl3a")
+
+[node name="Pia17172SaturnEclipseMosaicBrightCrop" type="Sprite2D" parent="."]
+position = Vector2(-11, -24)
+scale = Vector2(10, 10)
+texture = ExtResource("1_ti3k6")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_7gnyr")
+pitch_scale = 0.1
+
+[node name="Player2" type="RigidBody2D" parent="."]
+gravity_scale = 0.0
+script = ExtResource("1_u6bc0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player2"]
+sprite_frames = SubResource("SpriteFrames_g1gax")
+
+[node name="Camera2D" type="Camera2D" parent="Player2/AnimatedSprite2D"]
+ignore_rotation = false
+position_smoothing_speed = 50.0
+rotation_smoothing_enabled = true
+
+[node name="LeftThruster" type="AnimatedSprite2D" parent="Player2/AnimatedSprite2D"]
+position = Vector2(-22.625, -5.0625)
+rotation = -1.5708
+scale = Vector2(1, 1.019)
+sprite_frames = SubResource("SpriteFrames_4jrmk")
+animation = &"Thrust0"
+script = ExtResource("5_ytjv8")
+
+[node name="RightThruster" type="AnimatedSprite2D" parent="Player2/AnimatedSprite2D"]
+position = Vector2(23.5, -5.0625)
+rotation = 1.5708
+scale = Vector2(1, 1.139)
+sprite_frames = SubResource("SpriteFrames_4jrmk")
+animation = &"Thrust4"
+script = ExtResource("5_ytjv8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player2"]
+position = Vector2(0.5, -5.5)
+shape = SubResource("RectangleShape2D_fro2s")
+
+[node name="Asteroid" type="RigidBody2D" parent="."]
+gravity_scale = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Asteroid"]
+position = Vector2(-308, -164)
+texture = ExtResource("3_6omeh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Asteroid"]
+position = Vector2(-308, -164)
+shape = SubResource("RectangleShape2D_qilil")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+script = ExtResource("9_5y217")
+
+[node name="EscapeMenu" parent="CanvasLayer" instance=ExtResource("8_5jshb")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1

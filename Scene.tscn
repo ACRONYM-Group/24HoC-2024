@@ -7,7 +7,9 @@
 [ext_resource type="Script" path="res://Thruster.gd" id="5_ytjv8"]
 [ext_resource type="Script" path="res://MiningCollider.gd" id="7_hmudl"]
 [ext_resource type="AudioStream" uid="uid://dhbtg7dpc0tuu" path="res://Sounds/Steam Puff.mp3" id="7_vcox7"]
+[ext_resource type="PackedScene" uid="uid://cfuyixon7ew87" path="res://EscapeMenu.tscn" id="8_5jshb"]
 [ext_resource type="Texture2D" uid="uid://u1alvyyh6y0c" path="res://Sprites/Tiles/Asteroid_Hextile_Ice0.png" id="8_dchvf"]
+[ext_resource type="Script" path="res://Inventory.gd" id="8_p4qje"]
 [ext_resource type="Script" path="res://Asteroid.gd" id="9_nld0i"]
 [ext_resource type="Texture2D" uid="uid://dtb1yc80ibuug" path="res://Sprites/Tiles/Asteroid_Hextile_Ice1.png" id="9_uey1h"]
 [ext_resource type="Texture2D" uid="uid://bbvevvyjsg6m1" path="res://Sprites/Tiles/Asteroid_Hextile_Ice2.png" id="10_iwi1i"]
@@ -18,6 +20,9 @@
 [ext_resource type="Texture2D" uid="uid://co0u4y3k364hj" path="res://Sprites/Tiles/Asteroid_Hextile_Metals1.png" id="15_s71wk"]
 [ext_resource type="Texture2D" uid="uid://bkek8rm71n4x1" path="res://Sprites/Tiles/Asteroid_Hextile_Metals2.png" id="16_n1gnu"]
 [ext_resource type="Texture2D" uid="uid://cwo7xtochsghj" path="res://Sprites/Tiles/Asteroid_Hextile_Metals3.png" id="17_h21yj"]
+[ext_resource type="PackedScene" uid="uid://eyqq1gfbjyvg" path="res://InventoryBar.tscn" id="16_rlqqm"]
+[ext_resource type="PackedScene" uid="uid://d04ymiajcoa1l" path="res://StatBars.tscn" id="17_46saa"]
+
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7gnyr"]
 random_pitch = 1.2
@@ -323,3 +328,43 @@ tile_set = SubResource("TileSet_r887t")
 format = 2
 layer_0/tile_data = PackedInt32Array(-1, 0, 0, -65536, 0, 0, 65535, 0, 0, 0, 0, 0, 65536, 0, 0, 131071, 3, 0)
 script = ExtResource("9_nld0i")
+[node name="Inventory" type="Node" parent="Player2"]
+script = ExtResource("8_p4qje")
+
+[node name="Asteroid" type="RigidBody2D" parent="."]
+position = Vector2(50, 200)
+rotation = 1.01578
+mass = 1000.0
+script = ExtResource("9_nld0i")
+
+[node name="TileMap" type="TileMap" parent="Asteroid"]
+tile_set = SubResource("TileSet_r887t")
+format = 2
+layer_0/tile_data = PackedInt32Array(-1, 0, 0, -65536, 0, 0, 65535, 0, 0, 0, 0, 0, 65536, 0, 0, 131071, 3, 0)
+
+[node name="Collider" type="CollisionPolygon2D" parent="Asteroid"]
+top_level = true
+build_mode = 1
+polygon = PackedVector2Array(-37.7193, 34.5458, 0, 0, 0, 0)
+
+[node name="Asteroids" type="Node" parent="."]
+script = ExtResource("11_ceddo")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
+visible = false
+
+[node name="EscapeMenu" parent="CanvasLayer" instance=ExtResource("8_5jshb")]
+process_mode = 3
+
+[node name="InventoryBarCanvas" type="CanvasLayer" parent="."]
+
+[node name="InventoryBar" parent="InventoryBarCanvas" instance=ExtResource("16_rlqqm")]
+
+[node name="StatsBarCanvas" type="CanvasLayer" parent="."]
+
+[node name="StatBars" parent="StatsBarCanvas" instance=ExtResource("17_46saa")]
+offset_left = 10.0
+offset_top = -54.0
+offset_right = 10.0
+offset_bottom = -54.0

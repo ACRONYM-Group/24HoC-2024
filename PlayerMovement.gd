@@ -5,12 +5,16 @@ extends RigidBody2D
 
 @export var max_rotation_rate = 180.0
 
+@export var allow_input = true
+
 var rot_vel = 0
 var rcs_thrust = 250
-var torque = 100
+var torque = 500
 var main_thrust = 1000
-
-	
+		
+func set_allow_input(state):
+	allow_input = state
+	#print(allow_input)
 
 func get_input(delta):
 	var input_direction = Input.get_vector("left", "right", "up", "down")
@@ -29,6 +33,9 @@ func get_input(delta):
 	$AnimatedSprite2D/LeftThruster.reset()
 	$AnimatedSprite2D/RightThruster.reset()
 	
+	if ( Input.is_action_just_pressed("left") || Input.is_action_just_pressed("right") || Input.is_action_just_pressed("up") || Input.is_action_just_pressed("down")) and input_direction != Vector2(0, 0):
+		$"../AudioStreamPlayer".play(0.0)
+		
 	if ( Input.is_action_just_pressed("left") || Input.is_action_just_pressed("right") || Input.is_action_just_pressed("up") || Input.is_action_just_pressed("down")) and input_direction != Vector2(0, 0):
 		$"../AudioStreamPlayer".play(0.0)
 		
@@ -60,6 +67,15 @@ func get_input(delta):
 		$AnimatedSprite2D.play("default")
 	#if Input.is_action_pressed("thrust"):
 		#velocity += (Vector2(0, -1) * 5 * accel_rate).rotated(rotation) * delta
+		
+	if allow_input == true:
+		if Input.is_action_pressed("thrust"):
+			self.apply_central_force((Vector2(0, -1) * main_thrust).rotated(self.rotation))
+
+		if input_direction.length() > 0:
+			self.apply_central_force((input_direction * rcs_thrust).rotated(self.rotation))
+		
+		self.apply_torque(delta_rotation * torque)
 		
 		
 

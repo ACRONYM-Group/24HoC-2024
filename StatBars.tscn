@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://d04ymiajcoa1l"]
+
+[ext_resource type="Script" path="res://StatBars.gd" id="1_pop44"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_652df"]
+bg_color = Color(0, 0.929412, 0, 1)
+
+[sub_resource type="Theme" id="Theme_nt764"]
+ProgressBar/font_sizes/font_size = 25
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_652df")
+
+[node name="StatBars" type="Control"]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+script = ExtResource("1_pop44")
+
+[node name="HPBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 7.0
+offset_top = -36.0
+offset_right = 531.0
+offset_bottom = -9.0
+theme = SubResource("Theme_nt764")
+value = 50.0
