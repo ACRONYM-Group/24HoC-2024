@@ -14,7 +14,7 @@ func generate_random(rng_seed):
 	var rng = RandomNumberGenerator.new()
 	rng.seed = rng_seed
 	var size = rng.randi_range(6, 7)
-	var types = [[3,4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16], [17]]
+	var types = [[3,4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16], [17], [19]]
 	var index = rng.randi_range(0, types.size() - 1)
 	
 	generate_tile_map(types[index], rng_seed, size)
@@ -114,7 +114,8 @@ func drill_collide_internal(location: Vector2, collect: bool):
 				$"../../Player2/Inventory".add_new_resource("carbon", 1)
 			17:
 				$"../../Player2/Inventory".add_new_resource("exotics", 1)
-
+			19: #rich metal ore, uses scrap tiles for now
+				$"../../Player2/Inventory".add_new_resource("metal", 2)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	for entry in queue:
