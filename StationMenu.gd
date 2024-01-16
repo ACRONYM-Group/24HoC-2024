@@ -24,10 +24,6 @@ func _process(delta):
 			self.get_parent().hide()
 			test = false
 			get_tree().paused = false
-		else:
-			self.get_parent().show()
-			test = true
-			get_tree().paused = true
 
 
 func _on_button_pressed():

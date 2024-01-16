@@ -3,6 +3,10 @@ extends TileMap
 const ICE_TILE = Vector2i(0, 0)
 const ROCK_TILE = Vector2i(0, 1)
 
+@export var tile_x = 0
+@export var tile_y = 0
+@export var uid = -1
+
 var queue = []
 var last_frame = []
 
@@ -18,6 +22,22 @@ func generate_random(rng_seed):
 	var index = rng.randi_range(0, types.size() - 1)
 	
 	generate_tile_map(types[index], rng_seed, size)
+	
+func store_tile_map_in_data():
+	var data_to_return = []
+	for x in self.get_used_cells(0):
+		data_to_return.append([
+			Vector2(x.x, x.y),
+			self.get_cell_source_id(0, x)
+			])
+			
+	return data_to_return
+	
+func load_tile_map_from_data(map_data):
+	var tm = self
+	
+	for x in map_data:
+		tm.set_cell(0, Vector2(x[0][0], x[0][1]), x[1], Vector2i(0, 0))
 
 func generate_tile_map(material, rng_seed, size: int = 10):
 	var tm = self
@@ -85,6 +105,8 @@ func drill_collide(location: Vector2, collect: bool):
 		if entry[0] == location:
 			return
 	queue.push_back([location, 0, collect])
+	
+	print(store_tile_map_in_data())
 		
 func drill_collide_internal(location: Vector2, collect: bool):
 	var tm = self

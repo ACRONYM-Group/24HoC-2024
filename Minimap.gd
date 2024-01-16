@@ -12,7 +12,6 @@ func _process(delta):
 	pass
 	
 func render_map(asteroids, center_position, generated_area, player_rotation):
-	
 	var rng = RandomNumberGenerator.new()
 		
 	var last_i = 0
@@ -58,7 +57,7 @@ func render_map(asteroids, center_position, generated_area, player_rotation):
 		
 	
 	var list_of_asteroids_to_remove = []
-	if last_i < asteroids_list.size():
+	if last_i+1 < asteroids_list.size():
 		for i in range(last_i, asteroids_list.size()):
 			remove_child(asteroids_list[i])
 			list_of_asteroids_to_remove.append(i)
