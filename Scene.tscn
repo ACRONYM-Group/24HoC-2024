@@ -39,7 +39,7 @@
 [ext_resource type="Texture2D" uid="uid://cu7chbc6apfxy" path="res://Sprites/Tiles/Scrap_Hextile_Armor.png" id="29_y12v4"]
 [ext_resource type="PackedScene" uid="uid://b24if7odisltp" path="res://Minimap.tscn" id="32_5xsfn"]
 [ext_resource type="Texture2D" uid="uid://b1742ydqfr7pa" path="res://Sprites/Tiles/Scrap_Hextile_Hazard.png" id="32_ryeb6"]
-[ext_resource type="PackedScene" path="res://StationMenu.tscn" id="34_2e14s"]
+[ext_resource type="PackedScene" uid="uid://bpwvhss0ig0vj" path="res://StationMenu.tscn" id="34_2e14s"]
 [ext_resource type="Texture2D" uid="uid://c36attdfboef2" path="res://Sprites/Main Ship images/Stage 1/mainship_spritesheet.png" id="37_1acfi"]
 [ext_resource type="AudioStream" uid="uid://cxpcu51f8ixfn" path="res://Sounds/Chronos.mp3" id="37_6vcnk"]
 [ext_resource type="Script" path="res://BigShip.gd" id="38_ame2n"]
