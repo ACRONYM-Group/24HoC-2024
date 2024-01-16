@@ -85,7 +85,7 @@ func get_input(delta):
 func _physics_process(delta):
 	get_input(delta)
 	
-	self.mass = $Inventory.get_total_count() * 0.25 + 1000
+	self.mass = $Inventory.get_total_count() * 0.25 + 500
 	
 	last_tick_rate = self.linear_velocity.length()
 	#move_and_slide()
