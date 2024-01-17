@@ -61,8 +61,8 @@ func load_ring_tile_from_data(tile_x, tile_y):
 	return number_of_asteroids_loaded
 		
 func generate_ring_tile(player_position):
-	print("uid counter: " + str(asteroid_uid_counter))
-	print("Number of persistent asteroids: " + str(persistent_asteroid_data.size()))
+	#print("uid counter: " + str(asteroid_uid_counter))
+	#print("Number of persistent asteroids: " + str(persistent_asteroid_data.size()))
 	keep_out_zones = [Vector3(0, 0, 1000)]
 	var asteroid_count = 0
 	unload_all_asteroids()

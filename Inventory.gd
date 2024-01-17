@@ -7,6 +7,7 @@ extends Node
 @export var exotics_quantity = 0
 @export var silicates_quantity = 0
 @export var hp = 100
+@export var fuel_quantity = 1000
 
 func to_dict():
 	var d = {}
@@ -36,6 +37,7 @@ func _process(delta):
 	$"../../InventoryBarCanvas/InventoryBar".set_exotics_qty(exotics_quantity)
 	$"../../InventoryBarCanvas/InventoryBar".set_silicates_qty(silicates_quantity)
 	$"../../StatsBarCanvas/StatBars".set_hp_bar_perc(hp)
+	$"../../StatsBarCanvas/StatBars".set_fuel_bar_perc(fuel_quantity/10)
 		
 	if Input.is_action_just_pressed("key7"):
 		hp += 1
@@ -58,6 +60,16 @@ func add_new_resource(material_name, amount):
 	elif material_name == "silicates":
 		silicates_quantity += amount
 		
+		
+func are_engines_operational():
+	if fuel_quantity > 0:
+		return true
+	else:
+		return false
+		
+func consume_some_fuel(amount):
+	fuel_quantity -= amount
+		
 func clear():
 	ice_quantity = 0
 	metal_quantity = 0
@@ -65,6 +77,7 @@ func clear():
 	carbon_quantity = 0
 	exotics_quantity = 0
 	silicates_quantity = 0
+	fuel_quantity = 1000
 		
 func delta_hp(amount):
 	self.hp += amount

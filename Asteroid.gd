@@ -106,7 +106,7 @@ func drill_collide(location: Vector2, collect: bool):
 			return
 	queue.push_back([location, 0, collect])
 	
-	print(store_tile_map_in_data())
+	#print(store_tile_map_in_data())
 		
 func drill_collide_internal(location: Vector2, collect: bool):
 	var tm = self

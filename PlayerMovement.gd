@@ -10,9 +10,9 @@ extends RigidBody2D
 @export var last_tick_rate = 0
 
 var rot_vel = 0
-var rcs_thrust = 250
-var torque = 500
-var main_thrust = 1000
+var rcs_thrust = 50000
+var torque = 50000
+var main_thrust = 200000
 		
 func set_allow_input(state):
 	allow_input = state
@@ -25,60 +25,68 @@ func get_input(delta):
 
 	rot_vel *= 1.0 - (3 * delta)
 	
-	if Input.is_action_pressed("thrust"):
-		apply_central_force((Vector2(0, -1) * 200 * main_thrust).rotated(self.rotation))
-
-	if input_direction.length() > 0:
-		apply_central_force((input_direction * 200 * rcs_thrust).rotated(self.rotation))
+	#if Input.is_action_pressed("thrust"):
+		#apply_central_force((Vector2(0, -1) * 200 * main_thrust).rotated(self.rotation))
+#
+	#if input_direction.length() > 0:
+		#apply_central_force((input_direction * 200 * rcs_thrust).rotated(self.rotation))
+	#
+	#apply_torque(delta_rotation * torque * 100)
 	
-	apply_torque(delta_rotation * torque * 100)
+	var engines_operational = $Inventory.are_engines_operational()
 	
 	$AnimatedSprite2D/LeftThruster.reset()
 	$AnimatedSprite2D/RightThruster.reset()
+	if engines_operational == true:
+		if ( Input.is_action_just_pressed("left") || Input.is_action_just_pressed("right") || Input.is_action_just_pressed("up") || Input.is_action_just_pressed("down")) and input_direction != Vector2(0, 0):
+			$"../AudioStreamPlayer".play(0.0)
+			
+		if ( Input.is_action_just_pressed("left") || Input.is_action_just_pressed("right") || Input.is_action_just_pressed("up") || Input.is_action_just_pressed("down")) and input_direction != Vector2(0, 0):
+			$"../AudioStreamPlayer".play(0.0)
+			
+		if (Input.is_action_just_pressed("rotate_left") || Input.is_action_just_pressed("rotate_right")) && delta_rotation != 0:
+			$"../AudioStreamPlayer".play(0.0)
+			
+		if input_direction.x > 0:
+			$AnimatedSprite2D/LeftThruster.thruster_1 = true
+		elif input_direction.x < 0:
+			$AnimatedSprite2D/RightThruster.thruster_1 = true
+			
+		if input_direction.y > 0:
+			$AnimatedSprite2D/LeftThruster.thruster_0 = true
+			$AnimatedSprite2D/RightThruster.thruster_2 = true
+		elif input_direction.y < 0:
+			$AnimatedSprite2D/RightThruster.thruster_0 = true
+			$AnimatedSprite2D/LeftThruster.thruster_2 = true
+			
+		if delta_rotation > 0:
+			$AnimatedSprite2D/LeftThruster.thruster_2 = true
+			$AnimatedSprite2D/RightThruster.thruster_2 = true
+		elif delta_rotation < 0:
+			$AnimatedSprite2D/LeftThruster.thruster_0 = true
+			$AnimatedSprite2D/RightThruster.thruster_0 = true
+			
+		if Input.is_action_just_pressed("thrust"):
+			$AnimatedSprite2D.play("thrusting")
+		if Input.is_action_just_released("thrust"):
+			$AnimatedSprite2D.play("default")
+		#if Input.is_action_pressed("thrust"):
+			#velocity += (Vector2(0, -1) * 5 * accel_rate).rotated(rotation) * delta
+		
 	
-	if ( Input.is_action_just_pressed("left") || Input.is_action_just_pressed("right") || Input.is_action_just_pressed("up") || Input.is_action_just_pressed("down")) and input_direction != Vector2(0, 0):
-		$"../AudioStreamPlayer".play(0.0)
-		
-	if ( Input.is_action_just_pressed("left") || Input.is_action_just_pressed("right") || Input.is_action_just_pressed("up") || Input.is_action_just_pressed("down")) and input_direction != Vector2(0, 0):
-		$"../AudioStreamPlayer".play(0.0)
-		
-	if (Input.is_action_just_pressed("rotate_left") || Input.is_action_just_pressed("rotate_right")) && delta_rotation != 0:
-		$"../AudioStreamPlayer".play(0.0)
-		
-	if input_direction.x > 0:
-		$AnimatedSprite2D/LeftThruster.thruster_1 = true
-	elif input_direction.x < 0:
-		$AnimatedSprite2D/RightThruster.thruster_1 = true
-		
-	if input_direction.y > 0:
-		$AnimatedSprite2D/LeftThruster.thruster_0 = true
-		$AnimatedSprite2D/RightThruster.thruster_2 = true
-	elif input_direction.y < 0:
-		$AnimatedSprite2D/RightThruster.thruster_0 = true
-		$AnimatedSprite2D/LeftThruster.thruster_2 = true
-		
-	if delta_rotation > 0:
-		$AnimatedSprite2D/LeftThruster.thruster_2 = true
-		$AnimatedSprite2D/RightThruster.thruster_2 = true
-	elif delta_rotation < 0:
-		$AnimatedSprite2D/LeftThruster.thruster_0 = true
-		$AnimatedSprite2D/RightThruster.thruster_0 = true
-		
-	if Input.is_action_just_pressed("thrust"):
-		$AnimatedSprite2D.play("thrusting")
-	if Input.is_action_just_released("thrust"):
-		$AnimatedSprite2D.play("default")
-	#if Input.is_action_pressed("thrust"):
-		#velocity += (Vector2(0, -1) * 5 * accel_rate).rotated(rotation) * delta
-		
-	if allow_input == true:
+	if allow_input == true and engines_operational == true:
 		if Input.is_action_pressed("thrust"):
 			self.apply_central_force((Vector2(0, -1) * main_thrust).rotated(self.rotation))
+			$Inventory.consume_some_fuel(0.15)
 
 		if input_direction.length() > 0:
 			self.apply_central_force((input_direction * rcs_thrust).rotated(self.rotation))
+			$Inventory.consume_some_fuel(0.05)
 		
-		self.apply_torque(delta_rotation * torque)
+		if abs(delta_rotation) > 0:
+			self.apply_torque(delta_rotation * torque)
+			$Inventory.consume_some_fuel(0.01)
+		
 		
 		
 
