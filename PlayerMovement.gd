@@ -13,6 +13,9 @@ var rot_vel = 0
 var rcs_thrust = 50000
 var torque = 50000
 var main_thrust = 200000
+var main_thruster_fuel_rate = 10
+var rotate_thruster_fuel_rate = 0.75
+var lateral_thruster_fuel_rate = 1.5
 		
 func set_allow_input(state):
 	allow_input = state
@@ -77,15 +80,15 @@ func get_input(delta):
 	if allow_input == true and engines_operational == true:
 		if Input.is_action_pressed("thrust"):
 			self.apply_central_force((Vector2(0, -1) * main_thrust).rotated(self.rotation))
-			$Inventory.consume_some_fuel(0.15)
+			$Inventory.consume_some_fuel(main_thruster_fuel_rate * delta)
 
 		if input_direction.length() > 0:
 			self.apply_central_force((input_direction * rcs_thrust).rotated(self.rotation))
-			$Inventory.consume_some_fuel(0.05)
+			$Inventory.consume_some_fuel(lateral_thruster_fuel_rate * delta)
 		
 		if abs(delta_rotation) > 0:
 			self.apply_torque(delta_rotation * torque)
-			$Inventory.consume_some_fuel(0.01)
+			$Inventory.consume_some_fuel(rotate_thruster_fuel_rate * delta)
 		
 		
 		
