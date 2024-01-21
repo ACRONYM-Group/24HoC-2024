@@ -18,7 +18,7 @@ func _process(delta):
 	if total_timer > 0 and total_timer <= delta:
 		$"../../StationMenu".visible = true
 		$"../../StationMenu/Control".start($"../../Player2/Inventory".to_dict())
-		$"../../Player2/Inventory".clear()
+		
 		get_tree().paused = true
 	timer -= delta
 	total_timer -= delta
@@ -28,3 +28,7 @@ func _process(delta):
 			self.visible = !visible
 	if total_timer < 0:
 		self.visible = false
+		
+	if $"../../StationMenu/Control".should_offload == true:
+		$"../../Player2/Inventory".clear()
+		$"../../StationMenu/Control".should_offload = false

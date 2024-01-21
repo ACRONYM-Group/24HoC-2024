@@ -164,5 +164,20 @@ func generate_asteroid(location: Vector2i, rng_seed):
 	return tile_map
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+
+func evaluate_existence():
+	var list_of_asteroids_to_remove = []
+	for i in range(list_of_asteroids.size()):
+		if list_of_asteroids[i].get_used_cells(0).size() == 0:
+			list_of_asteroids[i].destroyed = true
+			
+func get_list_of_not_destroyed_asteroids():
+	var list = []
+	for i in range(list_of_asteroids.size()):
+		if list_of_asteroids[i].destroyed == false:
+			list.append(list_of_asteroids[i])
+			
+	return list
+
 func _process(delta):
 	pass

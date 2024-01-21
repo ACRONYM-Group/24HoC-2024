@@ -1,19 +1,69 @@
-[gd_scene load_steps=6 format=3 uid="uid://dvm7pl87icljo"]
+[gd_scene load_steps=23 format=3 uid="uid://e7saafkhgont"]
 
 [ext_resource type="Texture2D" uid="uid://b4fmyk1imo7qn" path="res://Sprites/Miner/miner_hangar.png" id="1_d724g"]
 [ext_resource type="Script" path="res://StationMenu.gd" id="1_lukxn"]
-[ext_resource type="Script" path="res://Label.gd" id="2_68cfd"]
+[ext_resource type="Texture2D" uid="uid://bic13idsvs2oi" path="res://Sprites/Resources/IceCube.png" id="3_hog3a"]
+[ext_resource type="Script" path="res://GenericInventoryBar.gd" id="3_oyka8"]
+[ext_resource type="Texture2D" uid="uid://c5pnw2kgkfcsr" path="res://Sprites/Resources/CarbonBlock.png" id="4_icfyx"]
+[ext_resource type="Texture2D" uid="uid://dmmirawoydmlc" path="res://Sprites/Resources/AmuliteChunk.png" id="5_lplhi"]
+[ext_resource type="Texture2D" uid="uid://poof313h0ntm" path="res://Sprites/Resources/RefinedIron.png" id="6_stutt"]
+[ext_resource type="Texture2D" uid="uid://q8fxofaeos4d" path="res://Sprites/Resources/SPACEBRICK.png" id="7_r4gpe"]
+[ext_resource type="Texture2D" uid="uid://ch6cgw6vaxcqx" path="res://Sprites/Resources/CopperChunk.png" id="8_3kvut"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c5ivq"]
-bg_color = Color(0, 0.6, 0, 1)
-corner_radius_top_left = 30
-corner_radius_top_right = 30
-corner_radius_bottom_right = 30
-corner_radius_bottom_left = 30
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kihb7"]
+bg_color = Color(0.298039, 0.717647, 0.278431, 1)
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
 [sub_resource type="Theme" id="Theme_e2nus"]
 Button/font_sizes/font_size = 48
-Button/styles/normal = SubResource("StyleBoxFlat_c5ivq")
+Button/styles/normal = SubResource("StyleBoxFlat_kihb7")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_umf3p"]
+bg_color = Color(0.364706, 0.364706, 0.364706, 0.831373)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+
+[sub_resource type="Theme" id="Theme_l1lay"]
+Panel/styles/panel = SubResource("StyleBoxFlat_umf3p")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0mdyx"]
+bg_color = Color(0.14902, 0.654902, 0.827451, 1)
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+
+[sub_resource type="Theme" id="Theme_x20ar"]
+Button/font_sizes/font_size = 32
+Button/styles/normal = SubResource("StyleBoxFlat_0mdyx")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hnbw5"]
+bg_color = Color(0.14902, 0.654902, 0.827451, 0.803922)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+
+[sub_resource type="Theme" id="Theme_gijvi"]
+Panel/styles/panel = SubResource("StyleBoxFlat_hnbw5")
+
+[sub_resource type="Theme" id="Theme_ha0ra"]
+Label/font_sizes/font_size = 14
+Label/styles/normal = null
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hp4hq"]
+bg_color = Color(0.364706, 0.364706, 0.364706, 0.831373)
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+
+[sub_resource type="Theme" id="Theme_nxrv4"]
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_hp4hq")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cxpcg"]
+bg_color = Color(0, 0.678431, 0.737255, 1)
+
+[sub_resource type="Theme" id="Theme_ukm2x"]
+ProgressBar/font_sizes/font_size = 25
+ProgressBar/fonts/font = null
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_cxpcg")
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -43,24 +93,443 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_d724g")
 
-[node name="Label" type="Label" parent="Panel/TextureRect"]
-layout_mode = 0
-offset_left = 458.0
-offset_top = 59.0
-offset_right = 503.0
-offset_bottom = 82.0
-text = "Hello!"
-script = ExtResource("2_68cfd")
-
-[node name="Button2" type="Button" parent="."]
+[node name="BackButton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 17.0
-offset_top = -126.0
-offset_right = 741.0
-offset_bottom = -25.0
+offset_left = 40.0
+offset_top = -123.0
+offset_right = 290.0
+offset_bottom = -53.0
 grow_vertical = 0
 theme = SubResource("Theme_e2nus")
 text = "Back"
+
+[node name="Panel2" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 20.0
+offset_right = 290.0
+offset_bottom = 520.0
+theme = SubResource("Theme_l1lay")
+
+[node name="Control" type="Control" parent="Panel2"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CargoButton" type="Button" parent="Panel2/Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = 45.0
+offset_right = 220.0
+offset_bottom = 115.0
+grow_vertical = 0
+theme = SubResource("Theme_x20ar")
+text = "Cargo"
+
+[node name="Panel3" type="Panel" parent="Panel2/Control"]
+layout_mode = 0
+offset_right = 250.0
+offset_bottom = 79.0
+theme = SubResource("Theme_gijvi")
+
+[node name="Label" type="Label" parent="Panel2/Control"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 16.0
+offset_right = 251.0
+offset_bottom = 65.0
+theme = SubResource("Theme_ha0ra")
+text = "Welcome to Staging Point, Pilot. 
+How can we assist?"
+
+[node name="FuelButton" type="Button" parent="Panel2/Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = 121.0
+offset_right = 220.0
+offset_bottom = 191.0
+grow_vertical = 0
+theme = SubResource("Theme_x20ar")
+text = "Fuel"
+
+[node name="FuelContainer" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 298.0
+offset_top = 99.0
+offset_right = 1098.0
+offset_bottom = 520.0
+theme = SubResource("Theme_nxrv4")
+
+[node name="Control" type="Control" parent="FuelContainer"]
+layout_mode = 2
+
+[node name="FuelBar" type="ProgressBar" parent="FuelContainer/Control"]
+layout_mode = 2
+offset_left = 25.0
+offset_top = 64.0
+offset_right = 429.0
+offset_bottom = 103.0
+size_flags_horizontal = 5
+theme = SubResource("Theme_ukm2x")
+value = 50.0
+
+[node name="Label" type="Label" parent="FuelContainer/Control"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 41.0
+offset_right = 216.0
+offset_bottom = 64.0
+text = "Remaining Fuel Quantity
+"
+
+[node name="RefillButton" type="Button" parent="FuelContainer/Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 25.0
+offset_top = -239.0
+offset_right = 275.0
+offset_bottom = -169.0
+grow_vertical = 0
+theme = SubResource("Theme_e2nus")
+text = "Refill"
+
+[node name="Label2" type="Label" parent="FuelContainer/Control"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 111.0
+offset_right = 216.0
+offset_bottom = 134.0
+text = "Staging Point Reserves
+"
+
+[node name="StationFuelbar" type="ProgressBar" parent="FuelContainer/Control"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 134.0
+offset_right = 429.0
+offset_bottom = 173.0
+size_flags_horizontal = 5
+theme = SubResource("Theme_ukm2x")
+max_value = 1000.0
+value = 50.0
+show_percentage = false
+
+[node name="CargoContainer" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 298.0
+offset_top = 99.0
+offset_right = 1098.0
+offset_bottom = 520.0
+theme = SubResource("Theme_nxrv4")
+
+[node name="Control" type="Control" parent="CargoContainer"]
+layout_mode = 2
+
+[node name="OffloadButton" type="Button" parent="CargoContainer/Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 25.0
+offset_top = -239.0
+offset_right = 275.0
+offset_bottom = -169.0
+grow_vertical = 0
+theme = SubResource("Theme_e2nus")
+text = "Offload"
+
+[node name="StationQty" type="Control" parent="CargoContainer/Control"]
+anchors_preset = 0
+offset_top = 1.0
+offset_right = 310.0
+offset_bottom = 90.0
+script = ExtResource("3_oyka8")
+
+[node name="IceBox" type="ColorRect" parent="CargoContainer/Control/StationQty"]
+layout_mode = 0
+offset_left = 261.0
+offset_top = 40.0
+offset_right = 301.0
+offset_bottom = 80.0
+color = Color(0, 0.0352941, 1, 0.360784)
+
+[node name="IceQty" type="RichTextLabel" parent="CargoContainer/Control/StationQty/IceBox"]
+layout_mode = 0
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+text = "0"
+
+[node name="TextureRect" type="TextureRect" parent="CargoContainer/Control/StationQty/IceBox"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_hog3a")
+
+[node name="CarbonBox" type="ColorRect" parent="CargoContainer/Control/StationQty"]
+layout_mode = 0
+offset_left = 161.0
+offset_top = 40.0
+offset_right = 201.0
+offset_bottom = 80.0
+color = Color(0, 0, 0, 0.568627)
+
+[node name="CarbonQty" type="RichTextLabel" parent="CargoContainer/Control/StationQty/CarbonBox"]
+layout_mode = 0
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+text = "0"
+
+[node name="TextureRect" type="TextureRect" parent="CargoContainer/Control/StationQty/CarbonBox"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_icfyx")
+
+[node name="AmuliteBox" type="ColorRect" parent="CargoContainer/Control/StationQty"]
+layout_mode = 0
+offset_left = 111.0
+offset_top = 40.0
+offset_right = 151.0
+offset_bottom = 80.0
+color = Color(1, 0.556863, 0, 0.360784)
+
+[node name="AmuliteQty" type="RichTextLabel" parent="CargoContainer/Control/StationQty/AmuliteBox"]
+layout_mode = 0
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+text = "0"
+
+[node name="TextureRect" type="TextureRect" parent="CargoContainer/Control/StationQty/AmuliteBox"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5_lplhi")
+
+[node name="MetalBox" type="ColorRect" parent="CargoContainer/Control/StationQty"]
+layout_mode = 0
+offset_left = 61.0
+offset_top = 40.0
+offset_right = 101.0
+offset_bottom = 80.0
+color = Color(0.164706, 0.164706, 0.164706, 0.360784)
+
+[node name="MetalQty" type="RichTextLabel" parent="CargoContainer/Control/StationQty/MetalBox"]
+layout_mode = 0
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+text = "0"
+
+[node name="TextureRect" type="TextureRect" parent="CargoContainer/Control/StationQty/MetalBox"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("6_stutt")
+
+[node name="SilicatesBox" type="ColorRect" parent="CargoContainer/Control/StationQty"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 40.0
+offset_right = 51.0
+offset_bottom = 80.0
+color = Color(1, 0, 0, 0.341176)
+
+[node name="SilicatesQty" type="RichTextLabel" parent="CargoContainer/Control/StationQty/SilicatesBox"]
+layout_mode = 0
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+text = "0"
+
+[node name="TextureRect" type="TextureRect" parent="CargoContainer/Control/StationQty/SilicatesBox"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("7_r4gpe")
+
+[node name="ExoticsBox" type="ColorRect" parent="CargoContainer/Control/StationQty"]
+layout_mode = 0
+offset_left = 211.0
+offset_top = 40.0
+offset_right = 251.0
+offset_bottom = 80.0
+color = Color(0, 1, 1, 0.360784)
+
+[node name="ExoticsQty" type="RichTextLabel" parent="CargoContainer/Control/StationQty/ExoticsBox"]
+layout_mode = 0
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+text = "0"
+
+[node name="TextureRect" type="TextureRect" parent="CargoContainer/Control/StationQty/ExoticsBox"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("8_3kvut")
+
+[node name="StationQtyLabel" type="Label" parent="CargoContainer/Control/StationQty"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Current Station Quantities"
+
+[node name="ShipQty" type="Control" parent="CargoContainer/Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 90.0
+offset_right = 310.0
+offset_bottom = 179.0
+script = ExtResource("3_oyka8")
+
+[node name="IceBox" type="ColorRect" parent="CargoContainer/Control/ShipQty"]
+layout_mode = 0
+offset_left = 261.0
+offset_top = 40.0
+offset_right = 301.0
+offset_bottom = 80.0
+color = Color(0, 0.0352941, 1, 0.360784)
+
+[node name="IceQty" type="RichTextLabel" parent="CargoContainer/Control/ShipQty/IceBox"]
+layout_mode = 0
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+text = "0"
+
+[node name="TextureRect" type="TextureRect" parent="CargoContainer/Control/ShipQty/IceBox"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_hog3a")
+
+[node name="CarbonBox" type="ColorRect" parent="CargoContainer/Control/ShipQty"]
+layout_mode = 0
+offset_left = 161.0
+offset_top = 40.0
+offset_right = 201.0
+offset_bottom = 80.0
+color = Color(0, 0, 0, 0.568627)
+
+[node name="CarbonQty" type="RichTextLabel" parent="CargoContainer/Control/ShipQty/CarbonBox"]
+layout_mode = 0
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+text = "0"
+
+[node name="TextureRect" type="TextureRect" parent="CargoContainer/Control/ShipQty/CarbonBox"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_icfyx")
+
+[node name="AmuliteBox" type="ColorRect" parent="CargoContainer/Control/ShipQty"]
+layout_mode = 0
+offset_left = 111.0
+offset_top = 40.0
+offset_right = 151.0
+offset_bottom = 80.0
+color = Color(1, 0.556863, 0, 0.360784)
+
+[node name="AmuliteQty" type="RichTextLabel" parent="CargoContainer/Control/ShipQty/AmuliteBox"]
+layout_mode = 0
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+text = "0"
+
+[node name="TextureRect" type="TextureRect" parent="CargoContainer/Control/ShipQty/AmuliteBox"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5_lplhi")
+
+[node name="MetalBox" type="ColorRect" parent="CargoContainer/Control/ShipQty"]
+layout_mode = 0
+offset_left = 61.0
+offset_top = 40.0
+offset_right = 101.0
+offset_bottom = 80.0
+color = Color(0.164706, 0.164706, 0.164706, 0.360784)
+
+[node name="MetalQty" type="RichTextLabel" parent="CargoContainer/Control/ShipQty/MetalBox"]
+layout_mode = 0
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+text = "0"
+
+[node name="TextureRect" type="TextureRect" parent="CargoContainer/Control/ShipQty/MetalBox"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("6_stutt")
+
+[node name="SilicatesBox" type="ColorRect" parent="CargoContainer/Control/ShipQty"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 40.0
+offset_right = 51.0
+offset_bottom = 80.0
+color = Color(1, 0, 0, 0.341176)
+
+[node name="SilicatesQty" type="RichTextLabel" parent="CargoContainer/Control/ShipQty/SilicatesBox"]
+layout_mode = 0
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+text = "0"
+
+[node name="TextureRect" type="TextureRect" parent="CargoContainer/Control/ShipQty/SilicatesBox"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("7_r4gpe")
+
+[node name="ExoticsBox" type="ColorRect" parent="CargoContainer/Control/ShipQty"]
+layout_mode = 0
+offset_left = 211.0
+offset_top = 40.0
+offset_right = 251.0
+offset_bottom = 80.0
+color = Color(0, 1, 1, 0.360784)
+
+[node name="ExoticsQty" type="RichTextLabel" parent="CargoContainer/Control/ShipQty/ExoticsBox"]
+layout_mode = 0
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+text = "0"
+
+[node name="TextureRect" type="TextureRect" parent="CargoContainer/Control/ShipQty/ExoticsBox"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("8_3kvut")
+
+[node name="StationQtyLabel" type="Label" parent="CargoContainer/Control/ShipQty"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Current Ship Quantities"
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="Panel2/Control/CargoButton" to="." method="_on_cargo_button_pressed"]
+[connection signal="pressed" from="Panel2/Control/FuelButton" to="." method="_on_fuel_button_pressed"]
+[connection signal="pressed" from="FuelContainer/Control/RefillButton" to="." method="_on_refill_button_pressed"]
+[connection signal="pressed" from="CargoContainer/Control/OffloadButton" to="." method="_on_offload_button_pressed"]

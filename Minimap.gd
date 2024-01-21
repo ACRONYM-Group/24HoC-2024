@@ -13,6 +13,7 @@ func _process(delta):
 	
 func render_map(asteroids, center_position, generated_area, player_rotation):
 	var rng = RandomNumberGenerator.new()
+	var list_of_asteroids_to_remove = []
 		
 	var last_i = 0
 	for i in range(asteroids.size()):
@@ -29,7 +30,6 @@ func render_map(asteroids, center_position, generated_area, player_rotation):
 			
 			add_child(new_asteroid)
 			z = asteroids_list[i]
-		
 		
 		var x_coord = (x.position.x - center_position.x) * (80.0/generated_area)
 		var y_coord = (x.position.y - center_position.y) * (80.0/generated_area)
@@ -56,7 +56,6 @@ func render_map(asteroids, center_position, generated_area, player_rotation):
 		#print("Spawning at " + str(x.position.x) + " " + str(center_position.x) + " " + str(190.0/generated_area) + " " + str(generated_area))
 		
 	
-	var list_of_asteroids_to_remove = []
 	if last_i+1 < asteroids_list.size():
 		for i in range(last_i, asteroids_list.size()):
 			remove_child(asteroids_list[i])

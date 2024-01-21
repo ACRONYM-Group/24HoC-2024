@@ -6,6 +6,7 @@ const ROCK_TILE = Vector2i(0, 1)
 @export var tile_x = 0
 @export var tile_y = 0
 @export var uid = -1
+@export var destroyed = false
 
 var queue = []
 var last_frame = []

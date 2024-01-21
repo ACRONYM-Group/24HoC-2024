@@ -8,6 +8,7 @@ extends Node
 @export var silicates_quantity = 0
 @export var hp = 100
 @export var fuel_quantity = 1000
+var max_cargo_quantity = 100
 
 func to_dict():
 	var d = {}
@@ -48,17 +49,23 @@ func _process(delta):
 
 func add_new_resource(material_name, amount):
 	if material_name == "ice":
-		ice_quantity += amount
+		if ice_quantity + amount <= max_cargo_quantity:
+			ice_quantity += amount
 	elif material_name == "metal":
-		metal_quantity += amount
+		if metal_quantity + amount <= max_cargo_quantity:
+			metal_quantity += amount
 	elif material_name == "amulite":
-		amulite_quantity += amount
+		if amulite_quantity + amount <= max_cargo_quantity:
+			amulite_quantity += amount
 	elif material_name == "carbon":
-		carbon_quantity += amount
+		if carbon_quantity + amount <= max_cargo_quantity:
+			carbon_quantity += amount
 	elif material_name == "exotics":
-		exotics_quantity += amount
+		if exotics_quantity + amount <= max_cargo_quantity:
+			exotics_quantity += amount
 	elif material_name == "silicates":
-		silicates_quantity += amount
+		if silicates_quantity + amount <= max_cargo_quantity:
+			silicates_quantity += amount
 		
 		
 func are_engines_operational():
@@ -77,7 +84,6 @@ func clear():
 	carbon_quantity = 0
 	exotics_quantity = 0
 	silicates_quantity = 0
-	fuel_quantity = 1000
 		
 func delta_hp(amount):
 	self.hp += amount

@@ -9,13 +9,13 @@ bg_color = Color(0, 0.929412, 0, 1)
 ProgressBar/font_sizes/font_size = 25
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_652df")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cxpcg"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jjfi7"]
 bg_color = Color(0, 0.678431, 0.737255, 1)
 
 [sub_resource type="Theme" id="Theme_x5wxw"]
 ProgressBar/font_sizes/font_size = 25
 ProgressBar/fonts/font = null
-ProgressBar/styles/fill = SubResource("StyleBoxFlat_cxpcg")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_jjfi7")
 
 [node name="StatBars" type="Control"]
 layout_mode = 3
@@ -35,6 +35,7 @@ theme = SubResource("Theme_nt764")
 value = 50.0
 
 [node name="FuelBar" type="ProgressBar" parent="."]
+layout_mode = 0
 offset_left = 5.0
 offset_top = -82.0
 offset_right = 529.0
